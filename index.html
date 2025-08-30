@@ -6,756 +6,810 @@
     <title>جزوه وبینار نماز شبی‌ها - سیر و سلوک</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@9.3.0/dist/mermaid.min.js"></script>
+    <!-- Vazir Font -->
+    
     <style>
-        :root {
-            --primary-color: #4a89dc;
-            --secondary-color: #5d9cec;
-            --accent-color: #f6f6f6;
-            --text-color: #333;
-            --border-color: #ddd;
-            --success-color: #4caf50;
-            --warning-color: #ff9800;
-            --danger-color: #f44336;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f9f9f9;
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            min-height: 100vh;
-            padding-bottom: 100px;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: linear-gradient(to right, #4a89dc, #5d9cec);
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        h2 {
-            font-size: 22px;
-            margin: 20px 0 15px;
-            color: var(--primary-color);
-        }
-        
-        h3 {
-            font-size: 18px;
-            margin: 15px 0 10px;
-            color: var(--secondary-color);
-        }
-        
-        h4 {
-            font-size: 16px;
-            margin: 12px 0 8px;
-            color: var(--success-color);
-        }
-        
+    /* ایمپورت فونت وزیر از گوگل فونت‌ها */
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    
+    :root {
+        --primary-color: #4a89dc;
+        --secondary-color: #5d9cec;
+        --accent-color: #f6f6f6;
+        --text-color: #333;
+        --border-color: #ddd;
+        --success-color: #4caf50;
+        --warning-color: #ff9800;
+        --danger-color: #f44336;
+        --font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        --scrollbar-color: #2a8c82;
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: var(--font-family);
+    }
+    
+    body {
+        background-color: #f9f9f9;
+        color: var(--text-color);
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        min-height: 100vh;
+        padding-bottom: 100px;
+        font-family: var(--font-family);
+    }
+    
+    header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: linear-gradient(to right, #4a89dc, #5d9cec);
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: var(--font-family);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-family);
+    }
+    
+    h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    
+    h2 {
+        font-size: 22px;
+        margin: 20px 0 15px;
+        color: var(--primary-color);
+    }
+    
+    h3 {
+        font-size: 18px;
+        margin: 15px 0 10px;
+        color: var(--secondary-color);
+    }
+    
+    h4 {
+        font-size: 16px;
+        margin: 12px 0 8px;
+        color: var(--success-color);
+    }
+    
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        font-family: var(--font-family);
+    }
+    
+    .sessions-list {
+        flex: 1;
+        min-width: 300px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-height: 360px;
+        overflow-y: auto;
+        position: sticky;
+        top: 20px;
+        font-family: var(--font-family);
+    }
+    
+    .session-item {
+        padding: 15px;
+        margin-bottom: 10px;
+        background-color: var(--accent-color);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-right: 4px solid var(--primary-color);
+        font-family: var(--font-family);
+    }
+    
+    .session-item:hover {
+        background-color: #e8e8e8;
+        transform: translateX(-5px);
+    }
+    
+    .session-item.active {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .session-content {
+        flex: 2;
+        min-width: 300px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-height: 1600px;
+        overflow-y: auto;
+        font-family: var(--font-family);
+    }
+    
+    .session-details {
+        display: none;
+        font-family: var(--font-family);
+    }
+    
+    .session-details.active {
+        display: block;
+    }
+    
+    /* استایل جدید برای تاریخ جلسات */
+    .new-session-date {
+        display: inline-block;
+        background-color: #e8f4f8;
+        color: #2a5d6e;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-top: 5px;
+        font-weight: normal;
+        direction: rtl;
+    }
+    
+    body.dark-mode .new-session-date {
+        background-color: #2a3b45;
+        color: #a8d1e0;
+    }
+    
+    .summary-box {
+        background-color: #f0f7ff;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border-right: 3px solid var(--primary-color);
+        font-family: var(--font-family);
+    }
+    
+    .key-points {
+        background-color: #fff8e1;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border-right: 3px solid #ffc107;
+        font-family: var(--font-family);
+    }
+    
+    .key-points ul {
+        padding-right: 20px;
+    }
+    
+    .key-points li {
+        margin-bottom: 8px;
+    }
+    
+    .chart-container {
+        margin: 20px 0;
+        height: 300px;
+        position: relative;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    th, td {
+        padding: 12px 15px;
+        text-align: right;
+        border-bottom: 1px solid var(--border-color);
+        font-family: var(--font-family);
+    }
+    
+    th {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+    
+    .flowchart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .flowchart-step {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        min-width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        font-family: var(--font-family);
+    }
+    
+    .flowchart-arrow {
+        font-size: 24px;
+        color: var(--primary-color);
+    }
+    
+    .method-box {
+        background-color: #e8f5e9;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border-right: 3px solid #4caf50;
+        font-family: var(--font-family);
+    }
+    
+    .warning-box {
+        background-color: #ffecb3;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border-right: 3px solid var(--warning-color);
+        font-family: var(--font-family);
+    }
+    
+    .danger-box {
+        background-color: #ffcdd2;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border-right: 3px solid var(--danger-color);
+        font-family: var(--font-family);
+    }
+    
+    @media (max-width: 768px) {
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .sessions-list {
-            flex: 1;
-            min-width: 300px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-height: 360px;
-            overflow-y: auto;
-            position: sticky;
-            top: 20px;
-        }
-        
-        .session-item {
-            padding: 15px;
-            margin-bottom: 10px;
-            background-color: var(--accent-color);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-right: 4px solid var(--primary-color);
-        }
-        
-        .session-item:hover {
-            background-color: #e8e8e8;
-            transform: translateX(-5px);
-        }
-        
-        .session-item.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .session-content {
-            flex: 2;
-            min-width: 300px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-height: 1600px;
-            overflow-y: auto;
-        }
-        
-        .session-details {
-            display: none;
-        }
-        
-        .session-details.active {
-            display: block;
-        }
-        
-        .summary-box {
-            background-color: #f0f7ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 3px solid var(--primary-color);
-        }
-        
-        .key-points {
-            background-color: #fff8e1;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 3px solid #ffc107;
-        }
-        
-        .key-points ul {
-            padding-right: 20px;
-        }
-        
-        .key-points li {
-            margin-bottom: 8px;
-        }
-        
-        .chart-container {
-            margin: 20px 0;
-            height: 300px;
-            position: relative;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            text-align: right;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        th {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .flowchart {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .flowchart-step {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            min-width: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex-direction: column;
         }
         
         .flowchart-arrow {
-            font-size: 24px;
-            color: var(--primary-color);
+            transform: rotate(90deg);
         }
         
-        .method-box {
-            background-color: #e8f5e9;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 3px solid #4caf50;
+        .flowchart {
+            flex-direction: column;
         }
         
-        .warning-box {
-            background-color: #ffecb3;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 3px solid var(--warning-color);
+        .sessions-list {
+            position: static;
         }
-        
-        .danger-box {
-            background-color: #ffcdd2;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 3px solid var(--danger-color);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            
-            .flowchart-arrow {
-                transform: rotate(90deg);
-            }
-            
-            .flowchart {
-                flex-direction: column;
-            }
-            
-            .sessions-list {
-                position: static;
-            }
-        }
-        
-        .quote {
-            font-style: italic;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-right: 3px solid var(--secondary-color);
-            margin: 15px 0;
-        }
-        
-        .body-parts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .body-part {
-            background-color: #e3f2fd;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .practice-box {
-            background-color: #f3e5f5;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 3px solid #9c27b0;
-        }
-        
-        .eye-sins {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .eye-sin {
-            background-color: #fff3e0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .progress-container {
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            margin: 20px 0;
-            padding: 15px;
-        }
-        
-        .progress-bar {
-            height: 20px;
-            background-color: #4caf50;
-            border-radius: 5px;
-            margin-top: 10px;
-            width: 0%;
-            transition: width 1s ease-in-out;
-        }
-        
-        footer {
-            background: linear-gradient(to right, #4a89dc, #5d9cec);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 40px;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            left: 0;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        
-        .footer-links a:hover {
-            opacity: 0.8;
-        }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .card {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .card-title {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-        }
-        
-        .point-card {
-            background-color: #f0f7ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 3px solid var(--primary-color);
-        }
-        
-        .action-items {
-            background-color: #e8f5e9;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        
-        .action-items h2 {
-            color: var(--success-color);
-            margin-bottom: 15px;
-        }
-        
-        .chart-title {
-            text-align: center;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        
-        .summary-title {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-        }
-        
-        .anger-types, .influencer-types, .tear-types, .time-wasters, .influence-types {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .anger-type, .influencer-type, .tear-type, .time-waster, .influence-type {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .anger-type h4, .influencer-type h4, .tear-type h4, .time-waster h4, .influence-type h4 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        .example-box, .impact-box, .opportunity-box, .importance-box, .reminder-box {
-            background-color: #f0f7ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 3px solid var(--primary-color);
-        }
-        
-        .conclusion {
-            background-color: #e8f5e9;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        
-        .eye-errors {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .eye-error {
-            background-color: #fff3e0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        .comparison-table th {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-        }
-        
-        .comparison-table td {
-            padding: 12px 15px;
-            text-align: right;
-            border: 1px solid var(--border-color);
-        }
-        
-        .comparison-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        .session-summary {
-            background-color: #f0f7ff;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-right: 3px solid var(--primary-color);
-        }
-        
-        .flowchart-container {
-            margin: 20px 0;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background-color: var(--primary-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-        }
-                /* استایل دکمه جدید */
-        .ita-channel-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: #ff6600; /* رنگ نارنجی */
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 15px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .ita-channel-btn:hover {
-            background-color: #e65c00;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        
-        .ita-icon {
-            margin-left: 10px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-             /* استایل دکمه جدید */
-        .ita-channel-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: #ff6600; /* رنگ نارنجی */
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 15px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .ita-channel-btn:hover {
-            background-color: #e65c00;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        
-        .ita-icon {
-            margin-left: 10px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        /* استایل دکمه تغییر حالت شب */
-.dark-mode-toggle {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-}
-
-.dark-mode-toggle:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-}
-
-.sun-icon {
-    display: none;
-}
-
-/* استایل های حالت شب */
-body.dark-mode {
-    background-color: #1a1a1a;
-    color: #f0f0f0;
-}
-
-body.dark-mode header {
-    background: linear-gradient(to right, #2c3e50, #34495e);
-}
-
-body.dark-mode .sessions-list,
-body.dark-mode .session-content,
-body.dark-mode .card,
-body.dark-mode .summary-box,
-body.dark-mode .key-points,
-body.dark-mode .method-box,
-body.dark-mode .warning-box,
-body.dark-mode .danger-box,
-body.dark-mode .practice-box,
-body.dark-mode .quote,
-body.dark-mode .body-part,
-body.dark-mode .eye-sin,
-body.dark-mode .eye-error,
-body.dark-mode .anger-type,
-body.dark-mode .influencer-type,
-body.dark-mode .tear-type,
-body.dark-mode .time-waster,
-body.dark-mode .influence-type,
-body.dark-mode .example-box,
-body.dark-mode .impact-box,
-body.dark-mode .opportunity-box,
-body.dark-mode .importance-box,
-body.dark-mode .reminder-box,
-body.dark-mode .conclusion,
-body.dark-mode .session-summary,
-body.dark-mode .action-items,
-body.dark-mode .point-card {
-    background-color: #2d2d2d;
-    color: #f0f0f0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .session-item {
-    background-color: #3d3d3d;
-    color: #f0f0f0;
-    border-right: 4px solid #5d9cec;
-}
-
-body.dark-mode .session-item:hover {
-    background-color: #4a4a4a;
-}
-
-body.dark-mode .session-item.active {
-    background-color: #4a89dc;
-    color: white;
-}
-
-body.dark-mode table {
-    color: #f0f0f0;
-}
-
-body.dark-mode th {
-    background-color: #34495e;
-}
-
-body.dark-mode tr:hover {
-    background-color: #3d3d3d;
-}
-
-body.dark-mode h2 {
-    color: #5d9cec;
-}
-
-body.dark-mode h3 {
-    color: #6ba8e8;
-}
-
-body.dark-mode h4 {
-    color: #4caf50;
-}
-
-body.dark-mode .card-title {
-    color: #5d9cec;
-    border-bottom: 2px solid #5d9cec;
-}
-
-body.dark-mode .summary-title {
-    color: #5d9cec;
-    border-bottom: 2px solid #5d9cec;
-}
-
-body.dark-mode footer {
-    background: linear-gradient(to right, #2c3e50, #34495e);
-}
-
-/* تغییر نمایش آیکون‌ها در حالت شب */
-body.dark-mode .sun-icon {
-    display: block;
-}
-
-body.dark-mode .moon-icon {
-    display: none;
-}
-        /* استایل جدید برای دکمه بازگشت به بالا */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary-color);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            z-index: 1000;
-            opacity: 0;
-            transition: all 0.4s ease;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-        }
-        
-        .back-to-top:hover {
-            background-color: var(--secondary-color);
-            transform: translateX(-50%) translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* حالت شب برای دکمه */
-        body.dark-mode .back-to-top {
-            background-color: #5d9cec;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
-        
-        body.dark-mode .back-to-top:hover {
-            background-color: #4a89dc;
-        }
-                /* استایل جدید برای نمایش زمان مطالعه */
-        .reading-time {
-            display: flex;
-            align-items: center;
-            background-color: #e8f5e9;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-right: 3px solid #4caf50;
-            font-size: 14px;
-            color: #2e7d32;
-        }
-        
-        .reading-time-icon {
-            margin-left: 10px;
-            font-size: 18px;
-        }
-        
-        /* حالت شب */
-        body.dark-mode .reading-time {
-            background-color: #2d2d2d;
-            color: #a5d6a7;
-            border-right: 3px solid #4caf50;
-        }
-            /* استایل دایره پیشرفت - نسخه کاملاً اصلاح شده */
+    }
+    
+    .quote {
+        font-style: italic;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-right: 3px solid var(--secondary-color);
+        margin: 15px 0;
+        font-family: var(--font-family);
+    }
+    
+    .body-parts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .body-part {
+        background-color: #e3f2fd;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        font-family: var(--font-family);
+    }
+    
+    .practice-box {
+        background-color: #f3e5f5;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border-right: 3px solid #9c27b0;
+        font-family: var(--font-family);
+    }
+    
+    .eye-sins {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .eye-sin {
+        background-color: #fff3e0;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        font-family: var(--font-family);
+    }
+    
+    .progress-container {
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        margin: 20px 0;
+        padding: 15px;
+        font-family: var(--font-family);
+    }
+    
+    .progress-bar {
+        height: 20px;
+        background-color: #4caf50;
+        border-radius: 5px;
+        margin-top: 10px;
+        width: 0%;
+        transition: width 1s ease-in-out;
+    }
+    
+    footer {
+        background: linear-gradient(to right, #4a89dc, #5d9cec);
+        color: white;
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 40px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        font-family: var(--font-family);
+    }
+    
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        font-family: var(--font-family);
+    }
+    
+    .footer-links {
+        display: flex;
+        gap: 20px;
+        font-family: var(--font-family);
+    }
+    
+    .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+    }
+    
+    .footer-links a:hover {
+        opacity: 0.8;
+    }
+    
+    .content-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .card {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        font-family: var(--font-family);
+    }
+    
+    .card-title {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 10px;
+        font-family: var(--font-family);
+    }
+    
+    .point-card {
+        background-color: #f0f7ff;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border-right: 3px solid var(--primary-color);
+        font-family: var(--font-family);
+    }
+    
+    .action-items {
+        background-color: #e8f5e9;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .action-items h2 {
+        color: var(--success-color);
+        margin-bottom: 15px;
+    }
+    
+    .chart-title {
+        text-align: center;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+        font-family: var(--font-family);
+    }
+    
+    .summary-title {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 10px;
+        font-family: var(--font-family);
+    }
+    
+    .anger-types, .influencer-types, .tear-types, .time-wasters, .influence-types {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .anger-type, .influencer-type, .tear-type, .time-waster, .influence-type {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        font-family: var(--font-family);
+    }
+    
+    .anger-type h4, .influencer-type h4, .tear-type h4, .time-waster h4, .influence-type h4 {
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+    
+    .example-box, .impact-box, .opportunity-box, .importance-box, .reminder-box {
+        background-color: #f0f7ff;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border-right: 3px solid var(--primary-color);
+        font-family: var(--font-family);
+    }
+    
+    .conclusion {
+        background-color: #e8f5e9;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .eye-errors {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .eye-error {
+        background-color: #fff3e0;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        font-family: var(--font-family);
+    }
+    
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .comparison-table th {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+    }
+    
+    .comparison-table td {
+        padding: 12px 15px;
+        text-align: right;
+        border: 1px solid var(--border-color);
+    }
+    
+    .comparison-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    .session-summary {
+        background-color: #f0f7ff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border-right: 3px solid var(--primary-color);
+        font-family: var(--font-family);
+    }
+    
+    .flowchart-container {
+        margin: 20px 0;
+        font-family: var(--font-family);
+    }
+    
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-family: var(--font-family);
+    }
+    
+    .back-to-top.visible {
+        opacity: 1;
+    }
+    
+    /* استایل دکمه جدید */
+    .ita-channel-btn {
+        display: inline-flex;
+        align-items: center;
+        background-color: #ff6600;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 15px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        font-family: var(--font-family);
+    }
+    
+    .ita-channel-btn:hover {
+        background-color: #e65c00;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    
+    .ita-icon {
+        margin-left: 10px;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    
+    /* استایل دکمه تغییر حالت شب */
+    .dark-mode-toggle {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+        font-family: var(--font-family);
+    }
+    
+    .dark-mode-toggle:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+    }
+    
+    .sun-icon {
+        display: none;
+    }
+    
+    /* استایل های حالت شب */
+    body.dark-mode {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+    
+    body.dark-mode header {
+        background: linear-gradient(to right, #2c3e50, #34495e);
+    }
+    
+    body.dark-mode .sessions-list,
+    body.dark-mode .session-content,
+    body.dark-mode .card,
+    body.dark-mode .summary-box,
+    body.dark-mode .key-points,
+    body.dark-mode .method-box,
+    body.dark-mode .warning-box,
+    body.dark-mode .danger-box,
+    body.dark-mode .practice-box,
+    body.dark-mode .quote,
+    body.dark-mode .body-part,
+    body.dark-mode .eye-sin,
+    body.dark-mode .eye-error,
+    body.dark-mode .anger-type,
+    body.dark-mode .influencer-type,
+    body.dark-mode .tear-type,
+    body.dark-mode .time-waster,
+    body.dark-mode .influence-type,
+    body.dark-mode .example-box,
+    body.dark-mode .impact-box,
+    body.dark-mode .opportunity-box,
+    body.dark-mode .importance-box,
+    body.dark-mode .reminder-box,
+    body.dark-mode .conclusion,
+    body.dark-mode .session-summary,
+    body.dark-mode .action-items,
+    body.dark-mode .point-card {
+        background-color: #2d2d2d;
+        color: #f0f0f0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    body.dark-mode .session-item {
+        background-color: #3d3d3d;
+        color: #f0f0f0;
+        border-right: 4px solid #5d9cec;
+    }
+    
+    body.dark-mode .session-item:hover {
+        background-color: #4a4a4a;
+    }
+    
+    body.dark-mode .session-item.active {
+        background-color: #4a89dc;
+        color: white;
+    }
+    
+    body.dark-mode table {
+        color: #f0f0f0;
+    }
+    
+    body.dark-mode th {
+        background-color: #34495e;
+    }
+    
+    body.dark-mode tr:hover {
+        background-color: #3d3d3d;
+    }
+    
+    body.dark-mode h2 {
+        color: #5d9cec;
+    }
+    
+    body.dark-mode h3 {
+        color: #6ba8e8;
+    }
+    
+    body.dark-mode h4 {
+        color: #4caf50;
+    }
+    
+    body.dark-mode .card-title {
+        color: #5d9cec;
+        border-bottom: 2px solid #5d9cec;
+    }
+    
+    body.dark-mode .summary-title {
+        color: #5d9cec;
+        border-bottom: 2px solid #5d9cec;
+    }
+    
+    body.dark-mode footer {
+        background: linear-gradient(to right, #2c3e50, #34495e);
+    }
+    
+    /* تغییر نمایش آیکون‌ها در حالت شب */
+    body.dark-mode .sun-icon {
+        display: block;
+    }
+    
+    body.dark-mode .moon-icon {
+        display: none;
+    }
+    
+    /* استایل جدید برای دکمه بازگشت به بالا */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--primary-color);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        z-index: 1000;
+        opacity: 0;
+        transition: all 0.4s ease;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    .back-to-top.visible {
+        opacity: 1;
+    }
+    
+    .back-to-top:hover {
+        background-color: var(--secondary-color);
+        transform: translateX(-50%) translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* حالت شب برای دکمه */
+    body.dark-mode .back-to-top {
+        background-color: #5d9cec;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    
+    body.dark-mode .back-to-top:hover {
+        background-color: #4a89dc;
+    }
+    
+    /* استایل جدید برای نمایش زمان مطالعه */
+    .reading-time {
+        display: flex;
+        align-items: center;
+        background-color: #e8f5e9;
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border-right: 3px solid #4caf50;
+        font-size: 14px;
+        color: #2e7d32;
+        font-family: var(--font-family);
+    }
+    
+    .reading-time-icon {
+        margin-left: 10px;
+        font-size: 18px;
+    }
+    
+    /* حالت شب */
+    body.dark-mode .reading-time {
+        background-color: #2d2d2d;
+        color: #a5d6a7;
+        border-right: 3px solid #4caf50;
+    }
+    
+    /* استایل دایره پیشرفت */
     .progress-circle-container {
         position: fixed;
         bottom: 30px;
@@ -780,7 +834,6 @@ body.dark-mode .moon-icon {
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        /* این قسمت مشکل داشت - اصلاح شده */
         clip: rect(0px, 60px, 60px, 30px);
     }
     
@@ -790,7 +843,6 @@ body.dark-mode .moon-icon {
         height: 100%;
         border-radius: 50%;
         background: #4a89dc;
-        /* این قسمت مشکل داشت - اصلاح شده */
         clip: rect(0px, 30px, 60px, 0px);
         transform: rotate(0deg);
         transition: transform 0.3s ease;
@@ -810,6 +862,7 @@ body.dark-mode .moon-icon {
         font-weight: bold;
         color: #4a89dc;
         font-size: 14px;
+        font-family: var(--font-family);
     }
     
     /* حالت شب */
@@ -825,313 +878,321 @@ body.dark-mode .moon-icon {
     body.dark-mode .progress-circle-fill {
         background: #5d9cec;
     }
-            /* استایل‌های عمومی */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            min-height: 100vh;
-            padding-bottom: 100px;
-        }
-        
-        /* استایل‌های آزمون - نسخه بهبود یافته */
-        .quiz-container {
-            background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border-right: 4px solid #4a89dc;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .quiz-container h3 {
-            color: #4a89dc;
-            margin-bottom: 25px;
-            text-align: center;
-            font-size: 24px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .quiz-container h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, #4a89dc, #5d9cec);
-            border-radius: 3px;
-        }
-        
-        .quiz-question {
-            margin-bottom: 25px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .quiz-question:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-        
-        .quiz-question p {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #333;
-            font-size: 18px;
-        }
-        
-        .quiz-options {
-            margin-top: 15px;
-        }
-        
-        .quiz-options label {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            margin: 8px 0;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-color: #f8f9fa;
-            border: 2px solid transparent;
-            position: relative;
-        }
-        
-        .quiz-options label:hover {
-            background-color: #e9ecef;
-            transform: translateX(-5px);
-        }
-        
-        .quiz-options input {
-            position: absolute;
+    
+    /* استایل‌های عمومی */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: var(--font-family);
+    }
+    
+    body {
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        min-height: 100vh;
+        padding-bottom: 100px;
+        font-family: var(--font-family);
+    }
+    
+    /* استایل‌های آزمون */
+    .quiz-container {
+        background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%);
+        padding: 25px;
+        border-radius: 15px;
+        margin: 30px 0;
+        border-right: 4px solid #4a89dc;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        font-family: var(--font-family);
+    }
+    
+    .quiz-container h3 {
+        color: #4a89dc;
+        margin-bottom: 25px;
+        text-align: center;
+        font-size: 24px;
+        position: relative;
+        padding-bottom: 15px;
+    }
+    
+    .quiz-container h3:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+        transform: translateX(50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(to right, #4a89dc, #5d9cec);
+        border-radius: 3px;
+    }
+    
+    .quiz-question {
+        margin-bottom: 25px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+        font-family: var(--font-family);
+    }
+    
+    .quiz-question:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .quiz-question p {
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+        font-size: 18px;
+    }
+    
+    .quiz-options {
+        margin-top: 15px;
+    }
+    
+    .quiz-options label {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        margin: 8px 0;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: #f8f9fa;
+        border: 2px solid transparent;
+        position: relative;
+        font-family: var(--font-family);
+    }
+    
+    .quiz-options label:hover {
+        background-color: #e9ecef;
+        transform: translateX(-5px);
+    }
+    
+    .quiz-options input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+    
+    .custom-checkbox {
+        height: 22px;
+        width: 22px;
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+    }
+    
+    .quiz-options input:checked ~ .custom-checkbox {
+        background-color: #4a89dc;
+        border-color: #4a89dc;
+    }
+    
+    .custom-checkbox:after {
+        content: "✓";
+        display: none;
+        color: white;
+        font-weight: bold;
+    }
+    
+    .quiz-options input:checked ~ .custom-checkbox:after {
+        display: block;
+    }
+    
+    .option-text {
+        font-size: 16px;
+        color: #495057;
+        font-family: var(--font-family);
+    }
+    
+    .submit-quiz {
+        background: linear-gradient(to right, #4a89dc, #5d9cec);
+        color: white;
+        border: none;
+        padding: 14px 35px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        display: block;
+        margin: 25px auto;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(74, 137, 220, 0.3);
+        position: relative;
+        overflow: hidden;
+        font-family: var(--font-family);
+    }
+    
+    .submit-quiz:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(74, 137, 220, 0.4);
+    }
+    
+    .submit-quiz:active {
+        transform: translateY(1px);
+    }
+    
+    /* حالت شب برای آزمون */
+    body.dark-mode .quiz-container {
+        background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
+        border-right: 4px solid #5d9cec;
+    }
+    
+    body.dark-mode .quiz-question {
+        background-color: #3d3d3d;
+        color: #f0f0f0;
+    }
+    
+    body.dark-mode .quiz-question p {
+        color: #f0f0f0;
+    }
+    
+    body.dark-mode .quiz-options label {
+        background-color: #4a4a4a;
+        color: #f0f0f0;
+    }
+    
+    body.dark-mode .quiz-options label:hover {
+        background-color: #5a5a5a;
+    }
+    
+    body.dark-mode .option-text {
+        color: #f0f0f0;
+    }
+    
+    /* استایل‌های پاسخ‌های صحیح و غلط */
+    .correct-answer {
+        background-color: #d4edda !important;
+        color: #155724 !important;
+        border: 2px solid #c3e6cb !important;
+    }
+    
+    .wrong-answer {
+        background-color: #f8d7da !important;
+        color: #721c24 !important;
+        border: 2px solid #f5c6cb !important;
+    }
+    
+    /* نوتیفیکیشن نتایج */
+    .quiz-notification {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 20px 30px;
+        border-radius: 12px;
+        color: white;
+        font-weight: bold;
+        z-index: 10000;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        animation: fadeInUp 0.5s, fadeOut 0.5s 4.5s forwards;
+        text-align: center;
+        min-width: 300px;
+        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.7);
+        font-family: var(--font-family);
+    }
+    
+    @keyframes fadeInUp {
+        from {
             opacity: 0;
-            cursor: pointer;
+            transform: translate(-50%, 30px);
         }
-        
-        .custom-checkbox {
-            height: 22px;
-            width: 22px;
-            background-color: #fff;
-            border: 2px solid #ccc;
-            border-radius: 6px;
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
         }
-        
-        .quiz-options input:checked ~ .custom-checkbox {
-            background-color: #4a89dc;
-            border-color: #4a89dc;
+    }
+    
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
         }
-        
-        .custom-checkbox:after {
-            content: "✓";
-            display: none;
-            color: white;
-            font-weight: bold;
+        to {
+            opacity: 0;
+            visibility: hidden;
         }
-        
-        .quiz-options input:checked ~ .custom-checkbox:after {
-            display: block;
+    }
+    
+    .quiz-success {
+        background: rgba(76, 175, 80, 0.9);
+    }
+    
+    .quiz-failure {
+        background: rgba(244, 67, 54, 0.9);
+    }
+    
+    /* انیمیشن‌های شادی و شکست */
+    @keyframes celebrate {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    @keyframes sadShake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+    
+    .celebrate {
+        animation: celebrate 0.5s ease-in-out 3;
+    }
+    
+    .sad-shake {
+        animation: sadShake 0.5s ease-in-out 3;
+    }
+    
+    /* افکت گلباران */
+    .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background-color: #f0f;
+        opacity: 0.7;
+        border-radius: 0;
+        z-index: 9999;
+        pointer-events: none;
+    }
+    
+    @keyframes fall {
+        0% {
+            transform: translateY(-100px) rotate(0deg);
+            opacity: 1;
         }
-        
-        .option-text {
-            font-size: 16px;
-            color: #495057;
+        100% {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
         }
-        
-        .submit-quiz {
-            background: linear-gradient(to right, #4a89dc, #5d9cec);
-            color: white;
-            border: none;
-            padding: 14px 35px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            display: block;
-            margin: 25px auto;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(74, 137, 220, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .submit-quiz:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(74, 137, 220, 0.4);
-        }
-        
-        .submit-quiz:active {
-            transform: translateY(1px);
-        }
-        
-        /* حالت شب برای آزمون */
-        body.dark-mode .quiz-container {
-            background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
-            border-right: 4px solid #5d9cec;
-        }
-        
-        body.dark-mode .quiz-question {
-            background-color: #3d3d3d;
-            color: #f0f0f0;
-        }
-        
-        body.dark-mode .quiz-question p {
-            color: #f0f0f0;
-        }
-        
-        body.dark-mode .quiz-options label {
-            background-color: #4a4a4a;
-            color: #f0f0f0;
-        }
-        
-        body.dark-mode .quiz-options label:hover {
-            background-color: #5a5a5a;
-        }
-        
-        body.dark-mode .option-text {
-            color: #f0f0f0;
-        }
-        
-        /* استایل‌های پاسخ‌های صحیح و غلط */
-        .correct-answer {
-            background-color: #d4edda !important;
-            color: #155724 !important;
-            border: 2px solid #c3e6cb !important;
-        }
-        
-        .wrong-answer {
-            background-color: #f8d7da !important;
-            color: #721c24 !important;
-            border: 2px solid #f5c6cb !important;
-        }
-        
-        /* نوتیفیکیشن نتایج */
-        .quiz-notification {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 20px 30px;
-            border-radius: 12px;
-            color: white;
-            font-weight: bold;
-            z-index: 10000;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 0.5s, fadeOut 0.5s 4.5s forwards;
-            text-align: center;
-            min-width: 300px;
-            backdrop-filter: blur(10px);
-            background: rgba(0, 0, 0, 0.7);
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translate(-50%, 30px);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, 0);
-            }
-        }
-        
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-        
-        .quiz-success {
-            background: rgba(76, 175, 80, 0.9);
-        }
-        
-        .quiz-failure {
-            background: rgba(244, 67, 54, 0.9);
-        }
-        
-        /* انیمیشن‌های شادی و شکست */
-        @keyframes celebrate {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes sadShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-        
-        .celebrate {
-            animation: celebrate 0.5s ease-in-out 3;
-        }
-        
-        .sad-shake {
-            animation: sadShake 0.5s ease-in-out 3;
-        }
-        
-        /* افکت گلباران */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #f0f;
-            opacity: 0.7;
-            border-radius: 0;
-            z-index: 9999;
-            pointer-events: none;
-        }
-        
-        @keyframes fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* افکت آتش */
-        .fire {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: #ff5722;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #ff5722, 0 0 20px #ff5722;
-            z-index: 9999;
-            pointer-events: none;
-        }
+    }
+    
+    /* افکت آتش */
+    .fire {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: #ff5722;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #ff5722, 0 0 20px #ff5722;
+        z-index: 9999;
+        pointer-events: none;
+    }
         
         @keyframes fireFall {
             0% {
@@ -1410,6 +1471,335 @@ body.dark-mode .moon-icon {
         }
     }
     
+
+
+
+
+
+
+/* استایل تاریخ جلسات در لیست */
+.session-date-badge {
+    font-size: 11px;
+    color: #e0e0e0;
+    margin-top: 5px;
+    font-weight: normal;
+    direction: rtl;
+    display: block;
+    text-align: right;
+}
+
+/* حالت شب */
+body.dark-mode .session-date-badge {
+    color: #cccccc;
+}
+
+/* بولد کردن عنوان جلسه */
+.session-item {
+    font-weight: bold;
+}
+
+
+
+
+
+/* تم شب (Dark Mode) - بهبود یافته و حرفه‌ای */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #e0e0e0;
+}
+
+body.dark-mode header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .container > div {
+    background-color: #2d2d2d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    border: 1px solid #3d3d3d;
+}
+
+body.dark-mode .session-item {
+    background: linear-gradient(135deg, #3d3d3d 0%, #4a4a4a 100%);
+    border-right: 4px solid #5d9cec;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .session-item:hover {
+    background: linear-gradient(135deg, #4a4a4a 0%, #575757 100%);
+    transform: translateX(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .session-item.active {
+    background: linear-gradient(135deg, #4a89dc 0%, #5d9cec 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(74, 137, 220, 0.3);
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4 {
+    color: #6ba8e8;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .summary-box {
+    background: linear-gradient(135deg, #2a3b4d 0%, #34495e 100%);
+    border-right: 3px solid #4a89dc;
+    color: #e0e0e0;
+}
+
+body.dark-mode .key-points {
+    background: linear-gradient(135deg, #3d2c2c 0%, #4a3434 100%);
+    border-right: 3px solid #d4ac0d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .key-points ul li {
+    color: #e0e0e0;
+    border-bottom: 1px dashed #555;
+    padding: 8px 0;
+}
+
+body.dark-mode .key-points ul li:last-child {
+    border-bottom: none;
+}
+
+body.dark-mode .flowchart-step {
+    background: linear-gradient(135deg, #4a89dc 0%, #5d9cec 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+body.dark-mode .flowchart-arrow {
+    color: #4a89dc;
+    text-shadow: 0 0 5px rgba(74, 137, 220, 0.5);
+}
+
+body.dark-mode table {
+    border: 1px solid #444;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode th {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+    color: white;
+    border-bottom: 2px solid #4a89dc;
+}
+
+body.dark-mode td {
+    border-bottom: 1px solid #444;
+    color: #e0e0e0;
+}
+
+body.dark-mode tr:hover {
+    background-color: #3d3d3d;
+}
+
+body.dark-mode .quote {
+    background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
+    border-right: 3px solid #5d9cec;
+    color: #e0e0e0;
+    font-style: italic;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .practice-box {
+    background: linear-gradient(135deg, #2d3e2d 0%, #3d4a3d 100%);
+    border-right: 3px solid #4caf50;
+    color: #e0e0e0;
+}
+
+body.dark-mode .quiz-container {
+    background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
+    border-right: 4px solid #4a89dc;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .quiz-question {
+    background-color: #3d3d3d;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .quiz-options label {
+    background-color: #3d3d3d;
+    border: 2px solid #555;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .quiz-options label:hover {
+    background-color: #4a4a4a;
+    border-color: #4a89dc;
+    transform: translateX(-5px);
+}
+
+body.dark-mode .custom-checkbox {
+    border: 2px solid #777;
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .submit-quiz {
+    background: linear-gradient(to right, #4a89dc, #5d9cec);
+    box-shadow: 0 5px 15px rgba(74, 137, 220, 0.3);
+}
+
+body.dark-mode .submit-quiz:hover {
+    box-shadow: 0 8px 20px rgba(74, 137, 220, 0.4);
+    transform: translateY(-3px);
+}
+
+body.dark-mode .nav-btn {
+    background: linear-gradient(to right, #4a89dc, #5d9cec);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .nav-btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* استایل دکمه کانال ایتا - متن سفید */
+body.dark-mode .ita-channel-btn {
+    background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%);
+    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.25);
+    color: white !important; /* این خط اضافه شد */
+}
+
+body.dark-mode .ita-channel-btn:hover {
+    background: linear-gradient(135deg, #e65c00 0%, #ff751a 100%);
+    box-shadow: 0 6px 15px rgba(255, 102, 0, 0.35);
+    color: white !important; /* این خط اضافه شد */
+}
+
+body.dark-mode .session-date {
+    background: linear-gradient(135deg, #4a69bd 0%, #1e3799 100%);
+    box-shadow: 0 4px 10px rgba(30, 55, 153, 0.3);
+}
+
+body.dark-mode .session-date:hover {
+    box-shadow: 0 6px 15px rgba(30, 55, 153, 0.4);
+}
+
+body.dark-mode .card {
+    background: linear-gradient(135deg, #3d3d3d 0%, #4a4a4a 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #555;
+}
+
+body.dark-mode .method-box {
+    background: linear-gradient(135deg, #2d3e2d 0%, #3d4a3d 100%);
+    border-right: 3px solid #4caf50;
+}
+
+body.dark-mode .warning-box {
+    background: linear-gradient(135deg, #4a3d2d 0%, #5a4a3d 100%);
+    border-right: 3px solid #ff9800;
+}
+
+body.dark-mode .danger-box {
+    background: linear-gradient(135deg, #4a2d2d 0%, #5a3d3d 100%);
+    border-right: 3px solid #f44336;
+}
+
+body.dark-mode footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* انیمیشن‌های ظریف برای حالت شب */
+body.dark-mode .session-item,
+body.dark-mode .card,
+body.dark-mode .quiz-question {
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .session-item:hover,
+body.dark-mode .card:hover,
+body.dark-mode .quiz-question:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* اسکرول بار زیبا برای حالت شب */
+body.dark-mode ::-webkit-scrollbar {
+    width: 8px;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: #2a8c82;
+    border-radius: 4px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #21B8E3;
+}
+
+/* افکت‌های نور برای عناصر مهم */
+body.dark-mode h1 {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+body.dark-mode h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #4a89dc, transparent);
+    border-radius: 2px;
+}
+
+/* بهبود خوانایی لینک‌ها در حالت شب */
+body.dark-mode a {
+    color: #6ba8e8;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode a:hover {
+    color: #4a89dc;
+    text-shadow: 0 0 5px rgba(74, 137, 220, 0.3);
+}
+
+/* استایل برای هایلایت متن‌های مهم */
+body.dark-mode .highlight {
+    color: #ffcc00;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(255, 204, 0, 0.3);
+}
+
+/* استایل برای کدها و بلوک‌های خاص */
+body.dark-mode code {
+    background-color: #3d3d3d;
+    color: #ffcc00;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #555;
+}
+
+/* بهبود جدول‌ها در حالت شب */
+body.dark-mode table tr:nth-child(even) {
+    background-color: #3d3d3d;
+}
+
+/* استایل برای دکمه بازگشت به بالا در حالت شب */
+body.dark-mode .back-to-top {
+    background: linear-gradient(135deg, #4a89dc 0%, #5d9cec 100%);
+    box-shadow: 0 4px 12px rgba(74, 137, 220, 0.3);
+}
+
+body.dark-mode .back-to-top:hover {
+    background: linear-gradient(135deg, #5d9cec 0%, #6ba8e8 100%);
+    box-shadow: 0 6px 16px rgba(74, 137, 220, 0.4);
+}
     </style>
 </head>
 <body>
@@ -1422,32 +1812,98 @@ body.dark-mode .moon-icon {
 </button>
     </header>
     
+        
     <div class="container">
         <div class="sessions-list">
-            <h2 class="content-heading">فهرست جلسات</h2>
-            <div class="session-item active" data-session="1">جلسه اول: شناسایی و ترک گناهان</div>
-            <div class="session-item" data-session="2">جلسه دوم: راهنمای یافتن و حذف گناهان</div>
-            <div class="session-item" data-session="3">جلسه سوم: روش عملی کشف گناهان</div>
-            <div class="session-item" data-session="4">جلسه چهارم: تمرین عملی گناهان چشم</div>
-            <div class="session-item" data-session="5">جلسه پنجم: بازتاب اعمال برای شناسایی خطاها</div>
-            <div class="session-item" data-session="6">جلسه ششم: نگاه تجسسی و آفت فضای مجازی</div>
-            <div class="session-item" data-session="7">جلسه هفتم: بررسی خطاهای چشم</div>
-            <div class="session-item" data-session="8">جلسه هشتم: خطاهای چشمی در فضای مجازی و زندگی روزمره</div>
-            <div class="session-item" data-session="9">جلسه نهم: تأثیر نگاه بر جهت‌گیری زندگی به سوی دنیا یا آخرت</div>
-            <div class="session-item" data-session="10">جلسه دهم: مراقبت از چشم و کنترل ورودی‌های ذهن</div>
-            <div class="session-item" data-session="11">جلسه یازدهم: خطاهای چشم و تأثیر آن بر زندگی</div>
-            <div class="session-item" data-session="12">جلسه دوازدهم: پرهیز از عیب‌جویی و توجه به داشته‌ها</div>
-            <div class="session-item" data-session="13">جلسه سیزدهم: مراقبه و دوری از گناهان چشم</div>
-        
-            <div class="session-item" data-session="14">جلسه چهاردهم: نوافل روزانه و موسیقی در تبلیغ دین:</div>
-        
-            <div class="session-item" data-session="15">جلسه پانزدهم: خطاهای چشم و تأثیر آن بر تبلیغ دین و زندگی</div>
-            <div class="session-item" data-session="16">جلسه شانزدهم: تحلیل توحیدی اوضاع کنونی جامعه</div>
-                        <div class="session-item" data-session="17">جلسه هفدهم: خطاهای چشم و غفلت‌های روزمره</div>
-                                                <div class="session-item" data-session="18">جزوه جلسه هجدهم: بازتاب نعمت سحر، خطاهای چشم، قحطی جهانی و هدر دادن سرمایه عمر</div>
-                                                <div class="session-item" data-session="19">جزوه جلسه نوزدهم: کنترل ورودی‌های ذهن و چشم</div>
-                                                  <div class="session-item" data-session="20">جزوه جلسه بیستم: پناه به امام زمان در شرایط سخت</div>
+    <h2>فهرست جلسات</h2>
+<div class="session-item" data-session="21">
+<div class="session-title">جلسه بیست و یکم: غرب‌زدگی و تأثیر آن بر جامعه</div>
+<div class="new-session-date" id="session-date-21">شنبه ۸ شهریور ۱۴۰۴</div>
+            </div>
+                        <div class="session-item" data-session="20">
+                <div class="session-title">جزوه جلسه بیستم: پناه به امام زمان در شرایط سخت</div>
+                <div class="new-session-date" id="session-date-20">جمعه ۷ شهریور ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="19">
+                <div class="session-title">جزوه جلسه نوزدهم: کنترل ورودی‌های ذهن و چشم</div>
+                <div class="new-session-date" id="session-date-19">پنج‌شنبه ۶ شهریور ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="18">
+                <div class="session-title">جزوه جلسه هجدهم: بازتاب نعمت سحر، خطاهای چشم، قحطی جهانی و هدر دادن سرمایه عمر</div>
+                <div class="new-session-date" id="session-date-18">چهارشنبه ۵ شهریور ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="17">
+                <div class="session-title">جزوه جلسه هفدهم: خطاهای چشم و غفلت‌های روزمره</div>
+                <div class="new-session-date" id="session-date-17">سه‌شنبه ۴ شهریور ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="16">
+                <div class="session-title">جزوه جلسه شانزدهم: تحلیل توحیدی اوضاع کنونی جامعه</div>
+                <div class="new-session-date" id="session-date-16">دو‌شنبه ۳ شهریور ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="15">
+                <div class="session-title">جزوه جلسه پانزدهم: خطاهای چشم و تأثیر آن بر تبلیغ دین و زندگی</div>
+                <div class="new-session-date" id="session-date-15">یک‌شنبه ۲ شهریور ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="14">
+                <div class="session-title">جزوه جلسه چهاردهم: نوافل روزانه و موسیقی در تبلیغ دین</div>
+                <div class="new-session-date" id="session-date-14">شنبه ۱ شهریور ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="13">
+                <div class="session-title">جزوه جلسه سیزدهم: مراقبه و دوری از گناهان چشم</div>
+                <div class="new-session-date" id="session-date-13">جمعه ۳۱ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="12">
+                <div class="session-title">جزوه جلسه دوازدهم: پرهیز از عیب‌جویی و توجه به داشته‌ها</div>
+                <div class="new-session-date" id="session-date-12">پنج‌شنبه ۳۰ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="11">
+                <div class="session-title">جزوه جلسه یازدهم: خطاهای چشم و تأثیر آن بر زندگی</div>
+                <div class="new-session-date" id="session-date-11">چهار‌شنبه ۲۹ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="10">
+                <div class="session-title">جزوه جلسه دهم: مراقبت از چشم و کنترل ورودی‌های ذهن</div>
+                <div class="new-session-date" id="session-date-10">سه‌شنبه ۲۸ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="9">
+                <div class="session-title">جزوه جلسه نهم: تأثیر نگاه بر جهت‌گیری زندگی به سوی دنیا یا آخرت</div>
+                <div class="new-session-date" id="session-date-9">دوشنبه ۲۷ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="8">
+                <div class="session-title">جزوه جلسه هشتم: خطاهای چشمی در فضای مجازی و زندگی روزمره</div>
+                <div class="new-session-date" id="session-date-8">یک‌شنبه ۲۶ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="7">
+                <div class="session-title">جزوه جلسه هفتم: بررسی خطاهای چشم</div>
+                <div class="new-session-date" id="session-date-7">شنبه ۲۵ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="6">
+                <div class="session-title">جزوه جلسه ششم: نگاه تجسسی و آفت فضای مجازی</div>
+                <div class="new-session-date" id="session-date-6">جمعه ۲۴ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="5">
+                <div class="session-title">جزوه جلسه پنجم: بازتاب اعمال برای شناسایی خطاها</div>
+                <div class="new-session-date" id="session-date-5">پنج‌شنبه ۲۳ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="4">
+                <div class="session-title">جزوه جلسه چهارم: تمرین عملی گناهان چشم</div>
+                <div class="new-session-date" id="session-date-4">سه‌شنبه ۲۱ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="3">
+                <div class="session-title">جزوه جلسه سوم: روش عملی کشف گناهان</div>
+                <div class="new-session-date" id="session-date-3">دوشنبه ۲۰ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item" data-session="2">
+                <div class="session-title">جزوه جلسه دوم: راهنمای یافتن و حذف گناهان</div>
+                <div class="new-session-date" id="session-date-2">یک‌شنبه ۱۹ مرداد ۱۴۰۴</div>
+            </div>
+            <div class="session-item active" data-session="1">
+                <div class="session-title">جزوه جلسه اول: شناسایی و ترک گناهان</div>
+                <div class="new-session-date" id=by"session-date-1">شنبه ۱۸ مرداد ۱۴۰۴</div>
+               </div>
         </div>
+
+       
+   
         
         <div class="session-content">
             <!-- دکمه نمایش/پنهان کردن فهرست مطالب -->
@@ -1463,7 +1919,7 @@ body.dark-mode .moon-icon {
     
             <!-- محتوای جلسات -->
             <div class="session-details active" id="session-1">
-                <h1>جزوه جلسه اول: شناسایی و ترک گناهان</h1>
+                <h1 class="content-heading">جزوه جلسه اول: شناسایی و ترک گناهان</h1>
                 <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3571" class="ita-channel-btn" target="_blank">
             <span class="ita-icon">📬</span>
@@ -1471,7 +1927,7 @@ body.dark-mode .moon-icon {
         </a>
     
     
-        <div class="session-date">
+        <div class="session-date" id="session-1">
         <span class="date-icon">📅</span>
         <span>شنبه ۱۸ مرداد ۱۴۰۴</span>
     </div>
@@ -1718,14 +2174,14 @@ body.dark-mode .moon-icon {
 </div>
             </div>
             <div class="session-details" id="session-2">
-                <h1>جلسه دوم: راهنمای یافتن و حذف گناهان</h1>
+                <h1 class="content-heading">جلسه دوم: راهنمای یافتن و حذف گناهان</h1>
                        <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3573" class="ita-channel-btn" target="_blank">
             <span class="ita-icon">📬</span>
             فایل صوتی جلسه دوم
         </a>
         
-        <div class="session-date">
+        <div class="session-date" id="session-2">
         <span class="date-icon">📅</span>
         <span>یک‌شنبه ۱۹ مرداد ۱۴۰۴</span>
     </div>
@@ -1992,14 +2448,14 @@ body.dark-mode .moon-icon {
 </div>
             
             <div class="session-details" id="session-3">
-            <h1>جزوه جلسه سوم: روش عملی کشف گناهان</h1>
+            <h1 class="content-heading">جزوه جلسه سوم: روش عملی کشف گناهان</h1>
                 <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3575" class="ita-channel-btn" target="_blank">
             <span class="ita-icon">📬</span>
             فایل صوتی جلسه سوم
         </a>
         
-        <div class="session-date">
+        <div class="session-date" id="session-3">
         <span class="date-icon">📅</span>
         <span>دوشنبه ۲۰ مرداد ۱۴۰۴</span>
     </div>
@@ -2301,7 +2757,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-4">
-                <h2 class="content-heading">جلسه چهارم: تمرین عملی گناهان چشم</h2>
+                <h1 class="content-heading">جلسه چهارم: تمرین عملی گناهان چشم</h1>
                 
                    <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3578" class="ita-channel-btn" target="_blank">
@@ -2309,7 +2765,7 @@ body.dark-mode .moon-icon {
             فایل صوتی جلسه چهارم
         </a>
         
-        <div class="session-date">
+        <div class="session-date" id="session-4>
         <span class="date-icon">📅</span>
         <span>سه‌شنبه ۲۱ مرداد ۱۴۰۴</span>
     </div>
@@ -2581,7 +3037,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-5">
-                <h2 class="content-heading">جلسه پنجم: بازتاب اعمال برای شناسایی خطاها</h2>
+                <h1 class="content-heading">جلسه پنجم: بازتاب اعمال برای شناسایی خطاها</h1>
                 
               <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3582" class="ita-channel-btn" target="_blank">
@@ -2590,7 +3046,7 @@ body.dark-mode .moon-icon {
         </a>
         
         
-        <div class="session-date">
+        <div class="session-date" id="session-5">
         <span class="date-icon">📅</span>
         <span>پنج‌شنبه ۲۳ مرداد ۱۴۰۴</span>
     </div>
@@ -2846,7 +3302,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-6">
-                <h2 class="content-heading">جلسه ششم: نگاه تجسسی و آفت فضای مجازی</h2>
+                <h1 class="content-heading">جلسه ششم: نگاه تجسسی و آفت فضای مجازی</h1>
                 
                     <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3583" class="ita-channel-btn" target="_blank">
@@ -2854,7 +3310,7 @@ body.dark-mode .moon-icon {
             فایل صوتی جلسه ششم
         </a>
         
-        <div class="session-date">
+        <div class="session-date" id="session-6">
         <span class="date-icon">📅</span>
         <span>جمعه ۲۴ مرداد ۱۴۰۴</span>
     </div>
@@ -3150,7 +3606,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-7">
-                <h2 class="content-heading">جلسه هفتم: بررسی خطاهای چشم</h2>
+                <h1 class="content-heading">جلسه هفتم: بررسی خطاهای چشم</h1>
                 
                <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3585" class="ita-channel-btn" target="_blank">
@@ -3159,7 +3615,7 @@ body.dark-mode .moon-icon {
         </a>
         
         
-        <div class="session-date">
+        <div class="session-date" id="session-7">
         <span class="date-icon">📅</span>
         <span>شنبه ۲۵ مرداد ۱۴۰۴</span>
     </div>
@@ -3427,7 +3883,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-8">
-                <h2 class="content-heading">جلسه هشتم: خطاهای چشمی در فضای مجازی و زندگی روزمره</h2>
+                <h1 class="content-heading">جلسه هشتم: خطاهای چشمی در فضای مجازی و زندگی روزمره</h1>
                 
                  <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3587" class="ita-channel-btn" target="_blank">
@@ -3436,7 +3892,7 @@ body.dark-mode .moon-icon {
         </a>
         
         
-        <div class="session-date">
+        <div class="session-date" id="session-8">
         <span class="date-icon">📅</span>
         <span>یک‌شنبه ۲۶ مرداد ۱۴۰۴</span>
     </div>
@@ -3733,7 +4189,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-9">
-                <h2 class="content-heading">جلسه نهم: تأثیر نگاه بر جهت‌گیری زندگی به سوی دنیا یا آخرت</h2>
+                <h1 class="content-heading">جلسه نهم: تأثیر نگاه بر جهت‌گیری زندگی به سوی دنیا یا آخرت</h1>
                 
                 <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3588" class="ita-channel-btn" target="_blank">
@@ -3741,7 +4197,7 @@ body.dark-mode .moon-icon {
             فایل صوتی جلسه نهم
         </a>
         
-        <div class="session-date">
+        <div class="session-date" id="session-9">
         <span class="date-icon">📅</span>
         <span>دوشنبه ۲۷ مرداد ۱۴۰۴</span>
     </div>
@@ -4024,7 +4480,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-10">
-                <h2 class="content-heading">جلسه دهم: مراقبت از چشم و کنترل ورودی‌های ذهن</h2>
+                <h1 class="content-heading">جلسه دهم: مراقبت از چشم و کنترل ورودی‌های ذهن</h1>
                 
              <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3589" class="ita-channel-btn" target="_blank">
@@ -4032,7 +4488,7 @@ body.dark-mode .moon-icon {
             فایل صوتی جلسه دهم
         </a>
         
-        <div class="session-date">
+        <div class="session-date" id="session-10">
         <span class="date-icon">📅</span>
         <span>سه‌شنبه ۲۸ مرداد ۱۴۰۴</span>
     </div>
@@ -4384,7 +4840,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-11">
-                <h2 class="content-heading">جلسه یازدهم: خطاهای چشم و تأثیر آن بر زندگی</h2>
+                <h1 class="content-heading">جلسه یازدهم: خطاهای چشم و تأثیر آن بر زندگی</h1>
                 
                 <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3590" class="ita-channel-btn" target="_blank">
@@ -4392,7 +4848,7 @@ body.dark-mode .moon-icon {
             فایل صوتی جلسه یازدهم
         </a>
         
-        <div class="session-date">
+        <div class="session-date" id="session-11">
         <span class="date-icon">📅</span>
         <span>چهار‌شنبه ۲۹ مرداد ۱۴۰۴</span>
     </div>
@@ -4690,7 +5146,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-12">
-                <h2 class="content-heading">جلسه دوازدهم: پرهیز از عیب‌جویی و توجه به داشته‌ها</h2>
+                <h1 class="content-heading">جلسه دوازدهم: پرهیز از عیب‌جویی و توجه به داشته‌ها</h1>
                 
                 <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3591" class="ita-channel-btn" target="_blank">
@@ -4699,7 +5155,7 @@ body.dark-mode .moon-icon {
         </a>
         
         
-        <div class="session-date">
+        <div class="session-date" id="session-12">
         <span class="date-icon">📅</span>
         <span>پنج‌شنبه ۳۰ مرداد ۱۴۰۴</span>
     </div>
@@ -4996,7 +5452,7 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-13">
-                <h2 class="content-heading">جلسه سیزدهم: مراقبه و دوری از گناهان چشم</h2>
+                <h1 class="content-heading">جلسه سیزدهم: مراقبه و دوری از گناهان چشم</h1>
                 
                 <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3592" class="ita-channel-btn" target="_blank">
@@ -5004,7 +5460,7 @@ body.dark-mode .moon-icon {
             فایل صوتی جلسه سیزدهم
         </a>
         
-        <div class="session-date">
+        <div class="session-date" id="session-13">
         <span class="date-icon">📅</span>
         <span>جمعه ۳۱ مرداد ۱۴۰۴</span>
     </div>
@@ -5333,14 +5789,14 @@ body.dark-mode .moon-icon {
             </div>
             
             <div class="session-details" id="session-14">
-                            <h2 class="content-heading">جلسه چهاردهم: نوافل روزانه و موسیقی در تبلیغ دین</h2>
+                            <h1 class="content-heading">جلسه چهاردهم: نوافل روزانه و موسیقی در تبلیغ دین</h1>
                 <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/85479948/1397" class="ita-channel-btn" target="_blank">
             <span class="ita-icon">📬</span>
             فایل صوتی جلسه چهاردهم
         </a>
         
-        <div class="session-date">
+        <div class="session-date" id="session-14">
         <span class="date-icon">📅</span>
         <span>شنبه ۱ شهریور ۱۴۰۴</span>
     </div>
@@ -5655,14 +6111,14 @@ body.dark-mode .moon-icon {
             
             
             <div class="session-details" id="session-15">
-                            <h1>جلسه پانزدهم: خطاهای چشم و تأثیر آن بر تبلیغ دین و زندگی</h1>
+                            <h1 class="content-heading">جلسه پانزدهم: خطاهای چشم و تأثیر آن بر تبلیغ دین و زندگی</h1>
     <!-- دکمه برای کانال ایتا -->
     <a href="https://eitaa.com/night_pray/3595" class="ita-channel-btn" target="_blank">
         <span class="ita-icon">📬</span>
         فایل صوتی جلسه پانزدهم
     </a>
 
-        <div class="session-date">
+        <div class="session-date" id="session-15">
         <span class="date-icon">📅</span>
         <span>یک‌شنبه ۲ شهریور ۱۴۰۴</span>
     </div>
@@ -5992,7 +6448,7 @@ body.dark-mode .moon-icon {
          </div>
          
          <div class="session-details" id="session-16">
-             <h1>جزوه جلسه شانزدهم: تحلیل توحیدی اوضاع کنونی جامعه</h1>
+             <h1 class="content-heading">جزوه جلسه شانزدهم: تحلیل توحیدی اوضاع کنونی جامعه</h1>
     
     <!-- دکمه جدید برای کانال ایتا -->
         <a href="https://eitaa.com/night_pray/3594" class="ita-channel-btn" target="_blank">
@@ -6001,7 +6457,7 @@ body.dark-mode .moon-icon {
         </a>
         
         
-                <div class="session-date">
+                <div class="session-date" id="session-16">
         <span class="date-icon">📅</span>
         <span>دو‌شنبه ۳ شهریور ۱۴۰۴</span>
     </div>
@@ -6382,7 +6838,7 @@ body.dark-mode .moon-icon {
 </div>
     
 <div class="session-details" id="session-17">
-  <h2 class="content-heading">جلسه هفدهم: خطاهای چشم و غفلت‌های روزمره</h2>
+  <h1 class="content-heading">جلسه هفدهم: خطاهای چشم و غفلت‌های روزمره</h1>
   
   <!-- دکمه اصلاح شده برای کانال ایتا -->
   <a href="https://eitaa.com/night_pray" class="ita-channel-btn" target="_blank">
@@ -6390,7 +6846,7 @@ body.dark-mode .moon-icon {
     فایل صوتی جلسه هفدهم
   </a>
   
-          <div class="session-date">
+          <div class="session-date" id="session-17">
         <span class="date-icon">📅</span>
         <span>سه‌شنبه ۴ شهریور ۱۴۰۴</span>
     </div>
@@ -6632,7 +7088,7 @@ body.dark-mode .moon-icon {
 
         <div class="session-details" id="session-18">
         
-        <h2 class="content-heading">جزوه جلسه هجدهم: بازتاب نعمت سحر، خطاهای چشم، قحطی جهانی و هدر دادن سرمایه عمر</h2>
+        <h1 class="content-heading">جزوه جلسه هجدهم: بازتاب نعمت سحر، خطاهای چشم، قحطی جهانی و هدر دادن سرمایه عمر</h1>
         
           <!-- دکمه اصلاح شده برای کانال ایتا -->
   <a href="https://eitaa.com/night_pray" class="ita-channel-btn" target="_blank">
@@ -6641,7 +7097,7 @@ body.dark-mode .moon-icon {
   </a>
   
   
-          <div class="session-date">
+          <div class="session-date" id="session-18">
         <span class="date-icon">📅</span>
         <span>چهارشنبه ۵ شهریور ۱۴۰۴</span>
     </div>
@@ -6897,15 +7353,15 @@ body.dark-mode .moon-icon {
                  
               <div class="session-details" id="session-19">
         
-        <h2 class="content-heading">جزوه جلسه نوزدهم: کنترل ورودی‌های ذهن و چشم</h2>   
+        <h1 class="content-heading">جزوه جلسه نوزدهم: کنترل ورودی‌های ذهن و چشم</h1>   
                  
       <!-- دکمه جدید برای کانال ایتا -->
-<a href="https://eitaa.com/85479948/1397" class="ita-channel-btn" target="_blank">
+<a href="https://eitaa.com/night_pray/" class="ita-channel-btn" target="_blank">
     <span class="ita-icon">📬</span>
     فایل صوتی جلسه نوزدهم
 </a>
 
-<div class="session-date">
+<div class="session-date" id="session-19">
     <span class="date-icon">📅</span>
     <span>تاریخ برگزاری: پنج‌شنبه ۶ شهریور ۱۴۰۴</span>
 </div>           
@@ -7144,14 +7600,14 @@ body.dark-mode .moon-icon {
                             
                           <div class="session-details" id="session-20">
         
-        <h2 class="content-heading">جزوه جلسه بیستم: پناه به امام زمان در شرایط سخت</h2>                                                 
+        <h1 class="content-heading">جزوه جلسه بیستم: پناه به امام زمان در شرایط سخت</h1>                                                 
         <!-- دکمه جدید برای کانال ایتا -->
-<a href="https://eitaa.com/85479948/1397" class="ita-channel-btn" target="_blank">
+<a href="https://eitaa.com/night_pray/" class="ita-channel-btn" target="_blank">
     <span class="ita-icon">📬</span>
     فایل صوتی جلسه بیستم
 </a>
 
-<div class="session-date">
+<div class="session-date" id="session-20">
     <span class="date-icon">📅</span>
     <span>تاریخ برگزاری: جمعه ۷ شهریور ۱۴۰۴</span>
 </div>
@@ -7400,10 +7856,289 @@ body.dark-mode .moon-icon {
     <button class="nav-btn prev-btn" onclick="navigateToSession('prev')">جلسه قبل</button>
     <button class="nav-btn next-btn" onclick="navigateToSession('next')">جلسه بعد</button>
 </div>
+</div>
 
-                                               
-                                                                                                                             </div>
-        
+     <div class="session-details" id="session-21">
+       
+       <h1 class="content-heading">جزوه جلسه بیست و یکم: غرب‌زدگی و تأثیر آن بر جامعه</h1>
+       
+<!-- دکمه جدید برای کانال ایتا -->
+<a href="https://eitaa.com/night_pray" class="ita-channel-btn" target="_blank">
+    <span class="ita-icon">📬</span>
+    فایل صوتی جلسه بیست و یکم
+</a>
+
+<div class="session-date">
+    <span class="date-icon">📅</span>
+    <span>شنبه ۸ شهریور ۱۴۰۴</span>
+</div>
+
+<div class="summary-box">
+    <h2 class="content-heading">خلاصه جلسه:</h2>
+    <p>این جلسه به بررسی <strong>غرب‌زدگی</strong> به عنوان بزرگ‌ترین مشکل جامعه و تأثیر آن بر ابعاد مختلف زندگی فردی و اجتماعی می‌پردازد. همچنین به نقد دیدگاه‌های سیاسی برخی مسئولین گذشته و ارتباط آن با مسائل دینی پرداخته شده است.</p>
+</div>
+
+<div class="key-points">
+    <h2 class="content-heading">نکات کلیدی:</h2>
+    <ul>
+        <li><strong>غرب‌زدگی</strong> بزرگ‌ترین مشکل جامعه ایران است</li>
+        <li>بی‌دینی، بی‌حجابی و بی‌عفتی ریشه در غرب‌زدگی دارد</li>
+        <li>مسئولین غرب‌زده می‌توانند کشور را به فاجعه بکشانند</li>
+        <li>بحث درباره غرب‌زدگی <strong>مسئله‌ای دینی</strong> است نه صرفاً سیاسی</li>
+        <li>طلبه موظف است حقایق را بیان کند حتی اگر باعث کاهش مخاطب شود</li>
+    </ul>
+</div>
+
+<h2 class="content-heading">تأثیرات غرب‌زدگی بر جامعه:</h2>
+<div class="chart-container">
+    <canvas id="westoxicationChart"></canvas>
+</div>
+
+<h2 class="content-heading">مقایسه دیدگاه دینی و غرب‌زده:</h2>
+<table>
+    <thead>
+        <tr>
+            <th>موضوع</th>
+            <th>دیدگاه دینی</th>
+            <th>دیدگاه غرب‌زده</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>حجاب و عفاف</strong></td>
+            <td>ارزش و ضرورت دینی</td>
+            <td>محدودیت و عقب‌ماندگی</td>
+        </tr>
+        <tr>
+            <td><strong>خانواده</strong></td>
+            <td>کانون تربیت و آرامش</td>
+            <td>محدودیت فردی</td>
+        </tr>
+        <tr>
+            <td><strong>سبک زندگی</strong></td>
+            <td>مبتنی بر ارزش‌های اسلامی</td>
+            <td>تقلید از الگوهای غربی</td>
+        </tr>
+        <tr>
+            <td><strong>روابط بین‌الملل</strong></td>
+            <td>استقلال و عزت اسلامی</td>
+            <td>وابستگی و دنباله‌روی</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="warning-box">
+    <h4>هشدار مهم:</h4>
+    <p>مسئولین غرب‌زده با <strong>درغگویی</strong> و <strong>توجیه‌گری</strong> باعث <strong>زدگی مردم از دین</strong> می‌شوند، چرا که حکومت را اسلامی می‌بینند و عملکرد بد مسئولین را به پای دین می‌گذارند.</p>
+</div>
+
+<h2 class="content-heading">وظیفه طلبه در بیان حقایق:</h2>
+<div class="flowchart">
+    <div class="flowchart-step">درک حقیقت دینی</div>
+    <div class="flowchart-arrow">→</div>
+    <div class="flowchart-step">بیان صادقانه</div>
+    <div class="flowchart-arrow">→</div>
+    <div class="flowchart-step">پذیرش عواقب</div>
+    <div class="flowchart-arrow">→</div>
+    <div class="flowchart-step">مسئولیت در قیامت</div>
+</div>
+
+<div class="method-box">
+    <h4>چرا باید درباره غرب‌زدگی صحبت کرد؟</h4>
+    <p>بحث درباره غرب‌زدگی <strong>مسئله‌ای دینی و اعتقادی</strong> است زیرا:</p>
+    <ul>
+        <li>معیشت مردم با دینداری آنها مرتبط است</li>
+        <li>عملکرد بد مسئولین باعث زدگی مردم از دین می‌شود</li>
+        <li>بیان حقایق جزء وظایف دینی طلبه است</li>
+        <li>سکوت در برابر انحرافات، خیانت به دین محسوب می‌شود</li>
+    </ul>
+</div>
+
+<h2 class="content-heading">مرور سریع مطالب:</h2>
+<table class="review-table">
+    <thead>
+        <tr>
+            <th>مفهوم کلیدی</th>
+            <th>توضیح مختصر</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>غرب‌زدگی</strong></td>
+            <td>بزرگ‌ترین مشکل جامعه ایران</td>
+        </tr>
+        <tr>
+            <td><strong>ریشه مشکلات</strong></td>
+            <td>بی‌دینی، بی‌حجابی و بی‌عفتی ناشی از غرب‌زدگی است</td>
+        </tr>
+        <tr>
+            <td><strong>وظیفه طلبه</strong></td>
+            <td>بیان حقایق بدون توجه به کاهش مخاطب</td>
+        </tr>
+        <tr>
+            <td><strong>مسئولین غرب‌زده</strong></td>
+            <td>عامل زدگی مردم از دین</td>
+        </tr>
+        <tr>
+            <td><strong>دیدگاه مقام معظم رهبری</strong></td>
+            <td>تأکید بر استقلال و عدم وابستگی به غرب</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="practice-box">
+    <h2 class="content-heading">تمرین عملی این جلسه:</h2>
+    <p>۱. <strong>بررسی رفتارهای شخصی</strong>: مواردی که از غرب تقلید کرده‌اید را شناسایی کنید.</p>
+    <p>۲. <strong>مطالعه کتاب غرب‌زدگی</strong>: کتاب جلال آل احمد را مطالعه و نکات کلیدی آن را یادداشت کنید.</p>
+    <p>۳. <strong>تحلیل اخبار</strong>: اخبار را با دیدگاه دینی تحلیل کنید نه تقلید از رسانه‌های غربی.</p>
+    <p>۴. <strong>تبیین برای دیگران</strong>: مفهوم غرب‌زدگی و آثار آن را برای حداقل یک نفر توضیح دهید.</p>
+</div>
+
+<!-- آزمون جلسه بیست و یکم -->
+<div class="quiz-container" id="quiz-session-21">
+    <h3 class="content-heading">آزمون سنجش یادگیری جلسه بیست و یکم</h3>
+    
+    <div class="quiz-question">
+        <p>1. به گفته استاد، بزرگ‌ترین مشکل جامعه ایران چیست؟</p>
+        <div class="quiz-options">
+            <label>
+                <input type="radio" name="q1" value="A">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">فساد اقتصادی</span>
+            </label>
+            <label>
+                <input type="radio" name="q1" value="B">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">غرب‌زدگی</span>
+            </label>
+            <label>
+                <input type="radio" name="q1" value="C">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">بی‌عدالتی اجتماعی</span>
+            </label>
+            <label>
+                <input type="radio" name="q1" value="D">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">ضعف مدیریتی</span>
+            </label>
+        </div>
+    </div>
+    
+    <div class="quiz-question">
+        <p>2. به گفته استاد، بی‌دینی و بی‌حجابی ناشی از چیست؟</p>
+        <div class="quiz-options">
+            <label>
+                <input type="radio" name="q2" value="A">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">فقر فرهنگی</span>
+            </label>
+            <label>
+                <input type="radio" name="q2" value="B">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">غرب‌زدگی</span>
+            </label>
+            <label>
+                <input type="radio" name="q2" value="C">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">ضعف ایمان</span>
+            </label>
+            <label>
+                <input type="radio" name="q2" value="D">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">تهاجم فرهنگی</span>
+            </label>
+        </div>
+    </div>
+    
+    <div class="quiz-question">
+        <p>3. طبق این جلسه، بحث درباره غرب‌زدگی چیست؟</p>
+        <div class="quiz-options">
+            <label>
+                <input type="radio" name="q3" value="A">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">فقط سیاسی</span>
+            </label>
+            <label>
+                <input type="radio" name="q3" value="B">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">دینی و اعتقادی</span>
+            </label>
+            <label>
+                <input type="radio" name="q3" value="C">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">فرهنگی و اجتماعی</span>
+            </label>
+            <label>
+                <input type="radio" name="q3" value="D">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">صرفاً اقتصادی</span>
+            </label>
+        </div>
+    </div>
+    
+    <div class="quiz-question">
+        <p>4. به گفته استاد، مسئولین غرب‌زده چه تأثیری دارند؟</p>
+        <div class="quiz-options">
+            <label>
+                <input type="radio" name="q4" value="A">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">پیشرفت کشور</span>
+            </label>
+            <label>
+                <input type="radio" name="q4" value="B">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">زدگی مردم از دین</span>
+            </label>
+            <label>
+                <input type="radio" name="q4" value="C">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">افزایش محبوبیت نظام</span>
+            </label>
+            <label>
+                <input type="radio" name="q4" value="D">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">جذب سرمایه خارجی</span>
+            </label>
+        </div>
+    </div>
+    
+    <div class="quiz-question">
+        <p>5. نویسنده کتاب "غرب‌زدگی" که در جلسه نام برده شد کیست؟</p>
+        <div class="quiz-options">
+            <label>
+                <input type="radio" name="q5" value="A">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">جلال آل احمد</span>
+            </label>
+            <label>
+                <input type="radio" name="q5" value="B">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">علی شریعتی</span>
+            </label>
+            <label>
+                <input type="radio" name="q5" value="C">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">مرتضی مطهری</span>
+            </label>
+            <label>
+                <input type="radio" name="q5" value="D">
+                <span class="custom-checkbox"></span>
+                <span class="option-text">دکتر شریعتی</span>
+            </label>
+        </div>
+    </div>
+    
+    <button class="submit-quiz" data-session="21">ثبت آزمون</button>
+    <div class="quiz-result" style="display: none;"></div>
+</div>
+
+<!-- کد دکمه‌های پیمایش بین جلسات -->
+<div class="session-navigation">
+    <button class="nav-btn prev-btn" onclick="navigateToSession('prev')">جلسه قبل</button>
+    <button class="nav-btn next-btn" onclick="navigateToSession('next')">جلسه بعد</button>
+</div>
+     </div>                                                                                                                 
+             </div>  
         
         
          </div>
@@ -9143,6 +9878,109 @@ quizAnswers[20] = {
     q4: "B",
     q5: "B"
 };
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    function setActiveSession() {
+        // برای session-item ها
+        const sessionItems = document.querySelectorAll('.session-item[data-session]');
+        let highestSession = 0;
+        
+        // پیدا کردن بیشترین مقدار از بین session-item ها
+        sessionItems.forEach(item => {
+            const sessionNumber = parseInt(item.getAttribute('data-session'));
+            if (sessionNumber > highestSession) {
+                highestSession = sessionNumber;
+            }
+        });
+        
+        console.log('بیشترین شماره جلسه پیدا شد: ' + highestSession);
+        
+        // اعمال روی session-item ها
+        sessionItems.forEach(item => {
+            const sessionNumber = parseInt(item.getAttribute('data-session'));
+            if (sessionNumber === highestSession) {
+                item.classList.add('active');
+                console.log('session-item فعال شد: ' + sessionNumber);
+            } else {
+                item.classList.remove('active');
+            }
+        });
+        
+        // اعمال روی session-details ها
+        const sessionDetails = document.querySelectorAll('.session-details[data-session]');
+        sessionDetails.forEach(detail => {
+            const sessionNumber = parseInt(detail.getAttribute('data-session'));
+            if (sessionNumber === highestSession) {
+                detail.classList.add('active');
+                console.log('session-details فعال شد: ' + sessionNumber);
+            } else {
+                detail.classList.remove('active');
+            }
+        });
+    }
+    
+    // اجرای فوری
+    setActiveSession();
+    
+    // اگر محتوا با تاخیر لود می‌شود
+    setTimeout(setActiveSession, 500);
+});
+
+// اضافه کردن پاسخ‌های صحیح جلسه بیست و یکم
+quizAnswers[21] = {
+    q1: "B",
+    q2: "B", 
+    q3: "B",
+    q4: "B",
+    q5: "A"
+};
+
+// ایجاد نمودار تأثیرات غرب‌زدگی
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('westoxicationChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['بی‌دینی', 'بی‌حجابی', 'بی‌عفتی', 'وابستگی', 'از خودبیگانگی'],
+            datasets: [{
+                label: 'تأثیر غرب‌زدگی',
+                data: [85, 80, 75, 90, 70],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'درصد تأثیر'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'تأثیر غرب‌زدگی بر ابعاد مختلف جامعه',
+                    font: {
+                        size: 16
+                    }
+                }
+            }
+        }
+    });
+});
+
+
     </script>
 </body>
 </html>
