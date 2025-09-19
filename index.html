@@ -16706,6 +16706,93 @@ quizAnswers[41] = {
     "q4": "A",
     "q5": "A"
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// کد مدیریت هدایت به جلسه خاص از طریق هش (#) در URL
+document.addEventListener('DOMContentLoaded', function() {
+    // بررسی وجود هش در URL
+    const hash = window.location.hash;
+    if (hash) {
+        const sessionId = hash.substring(1); // حذف # از ابتدا
+        const targetSession = document.getElementById(sessionId);
+        
+        if (targetSession) {
+            // غیرفعال کردن همه جلسات
+            document.querySelectorAll('.session-details').forEach(session => {
+                session.classList.remove('active');
+            });
+            
+            // فعال کردن جلسه هدف
+            targetSession.classList.add('active');
+            
+            // به روزرسانی وضعیت فعال در لیست جلسات
+            document.querySelectorAll('.session-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-session') === sessionId.replace('session-', '')) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // اسکرول به جلسه مورد نظر
+            setTimeout(() => {
+                targetSession.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    }
+});
+
+// تابع پیمایش بین جلسات
+function navigateToSession(direction) {
+    const activeSession = document.querySelector('.session-details.active');
+    const allSessions = Array.from(document.querySelectorAll('.session-details'));
+    const currentIndex = allSessions.indexOf(activeSession);
+    
+    let targetIndex;
+    if (direction === 'next') {
+        targetIndex = (currentIndex + 1) % allSessions.length;
+    } else if (direction === 'prev') {
+        targetIndex = (currentIndex - 1 + allSessions.length) % allSessions.length;
+    }
+    
+    // غیرفعال کردن جلسه فعلی
+    activeSession.classList.remove('active');
+    
+    // فعال کردن جلسه جدید
+    const targetSession = allSessions[targetIndex];
+    targetSession.classList.add('active');
+    
+    // به روزرسانی URL با هش جدید
+    const sessionId = targetSession.id;
+    window.location.hash = sessionId;
+    
+    // اسکرول به جلسه جدید
+    targetSession.scrollIntoView({ behavior: 'smooth' });
+    
+    // به روزرسانی وضعیت فعال در لیست جلسات
+    document.querySelectorAll('.session-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-session') === sessionId.replace('session-', '')) {
+            item.classList.add('active');
+        }
+    });
+}
     </script>
     
     
