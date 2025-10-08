@@ -1960,6 +1960,79 @@ body.dark-mode .chart-container canvas {
 body.dark-mode .profession-card {
     background: linear-gradient(135deg, #3d3d3d 0%, #4a4a4a 100%);
 }
+
+
+
+
+/* استایل‌های اضافی برای جلسه شصتم */
+/* این استایل‌ها در صورت نیاز به فایل CSS اصلی اضافه شوند */
+
+.criticism-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.criticism-type {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.criticism-type:hover {
+    transform: translateY(-5px);
+}
+
+.criticism-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.criticism-title {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* حالت شب برای کارت‌های انتقاد */
+body.dark-mode .criticism-type {
+    background: linear-gradient(135deg, #3d3d3d 0%, #4a4a4a 100%);
+}
+
+/* استایل‌های ویژه برای جلسه شصتم */
+.flowchart-step {
+    background: linear-gradient(135deg, #4a89dc 0%, #5d9cec 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    min-width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.flowchart-arrow {
+    font-size: 24px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* حالت شب */
+body.dark-mode .flowchart-step {
+    background: linear-gradient(135deg, #5d9cec 0%, #6ba8e8 100%);
+}
+
+body.dark-mode .flowchart-arrow {
+    color: #5d9cec;
+}
     </style>
 </head>
 <body>
@@ -1980,7 +2053,10 @@ body.dark-mode .profession-card {
   
   
   
-  
+          <div class="session-item" data-session="60">
+    <div class="session-title">جلسه ۶۰: اهمیت شنیدن انتقادات و نقش آن در رشد شخصی</div>
+    <div class="new-session-date" id="session-date-60">چهارشنبه ۱۶ مهر ۱۴۰۴</div>
+</div>
   
         <div class="session-item" data-session="59">
     <div class="session-title">جلسه ۵۹: اهمیت گوش دادن دقیق در مشاغل و زندگی روزمره</div>
@@ -19268,7 +19344,296 @@ body.dark-mode .profession-card {
 
 
 
+<!-- محتوای جلسه شصتم -->
+<div class="session-details" id="session-60">
+    <h1 class="content-heading">جلسه شصتم: اهمیت شنیدن انتقادات و نقش آن در رشد شخصی</h1>
+    
+    <!-- دکمه جدید برای کانال ایتا -->
+    <a href="https://eitaa.com/night_pray" class="ita-channel-btn" target="_blank">
+        <span class="ita-icon">📬</span>
+        فایل صوتی جلسه شصتم
+    </a>
+    
+    <div class="session-date">
+        <span class="date-icon">📅</span>
+        <span>چهارشنبه ۱۶ مهر ۱۴۰۴</span>
+    </div>
 
+    <div class="summary-box">
+        <h2 class="content-heading">خلاصه جلسه:</h2>
+        <p>این جلسه به بررسی <strong>اهمیت شنیدن انتقادات</strong> و نقش آن در <strong>رشد شخصی</strong> می‌پردازد. تأکید بر این است که گوش دادن به انتقادات دیگران می‌تواند به ما کمک کند تا <strong>عیوب پنهان خود</strong> را شناسایی و اصلاح کنیم.</p>
+    </div>
+    
+    <div class="key-points">
+        <h2 class="content-heading">نکات کلیدی:</h2>
+        <ul>
+            <li><strong>شنیدن انتقادات</strong> مانند دیدن عیوب پیشانی است که خودمان نمی‌بینیم</li>
+            <li>انتقاد کردن همان <strong>نهی از منکر</strong> است و باید با شرایط مناسب انجام شود</li>
+            <li>باید <strong>استقبال کنیم</strong> از انتقادات حتی اگر تلخ باشند</li>
+            <li>برخورد مناسب با انتقاد باعث <strong>تشویق دیگران</strong> برای بیان انتقادات می‌شود</li>
+            <li>ایجاد <strong>فرهنگ انتقادپذیری</strong> در خانواده و جامعه ضروری است</li>
+        </ul>
+    </div>
+    
+    <h2 class="content-heading">مزایای شنیدن انتقادات:</h2>
+    <div class="chart-container">
+        <canvas id="criticismBenefitsChart"></canvas>
+    </div>
+    
+    <h2 class="content-heading">انواع خطاهای گوش در مواجهه با انتقادات:</h2>
+    <div class="content-grid">
+        <div class="card">
+            <h4 class="card-title">عدم توجه</h4>
+            <p>وقتی دیگران انتقاد می‌کنند، توجه نکردن و مشغول موبایل بودن</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">برخورد نامناسب</h4>
+            <p>عصبانیت و برخورد تند در پاسخ به انتقادات دیگران</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">عدم استقبال</h4>
+            <p>اجتناب از شنیدن انتقادات و فرار از آنها</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">انتقاد نکردن</h4>
+            <p>عدم بیان انتقادات لازم به دیگران (ترک نهی از منکر)</p>
+        </div>
+    </div>
+    
+    <h2 class="content-heading">مراحل صحیح برخورد با انتقادات:</h2>
+    <div class="flowchart">
+        <div class="flowchart-step">شنیدن فعال</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">تشکر از منتقد</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">بررسی محتوای انتقاد</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">اقدام برای اصلاح</div>
+    </div>
+    
+    <h2 class="content-heading">راهکارهای عملی برای تقویت فرهنگ انتقادپذیری:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>راهکار</th>
+                <th>شرح</th>
+                <th>اثربخشی</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>درخواست انتقاد</strong></td>
+                <td>از دوستان و خانواده بخواهید periodically انتقاداتشان را بیان کنند</td>
+                <td>بسیار مؤثر</td>
+            </tr>
+            <tr>
+                <td><strong>برخورد محترمانه</strong></td>
+                <td>همیشه با تشکر و احترام به انتقادات پاسخ دهید</td>
+                <td>بسیار مؤثر</td>
+            </tr>
+            <tr>
+                <td><strong>عذرخواهی صادقانه</strong></td>
+                <td>در صورت اشتباه، صادقانه عذرخواهی کنید</td>
+                <td>مؤثر</td>
+            </tr>
+            <tr>
+                <td><strong>الگوسازی</strong></td>
+                <td>با انتقادپذیری خود، الگوی دیگران شوید</td>
+                <td>مؤثر</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="warning-box">
+        <h4>هشدار مهم:</h4>
+        <p>اگر از انتقادات <strong>استقبال نکنیم</strong>، دیگران از بیان انتقادات خودداری می‌کنند و ما از <strong>فرصت رشد و اصلاح</strong> محروم می‌شویم.</p>
+    </div>
+    
+    <div class="method-box">
+        <h4>نحوه صحیح انتقاد کردن:</h4>
+        <p>۱. انتخاب <strong>زمان و مکان مناسب</strong></p>
+        <p>۲. استفاده از <strong>لحن محترمانه و دلسوزانه</strong></p>
+        <p>３. تمرکز بر <strong>رفتارها نه شخصیت</strong> فرد</p>
+        <p>４. ارائه <strong>راهکارهای عملی</strong> برای بهبود</p>
+    </div>
+    
+    <h2 class="content-heading">فواید فرهنگ انتقادپذیری در خانواده:</h2>
+    <div class="content-grid">
+        <div class="card">
+            <h4 class="card-title">رشد فردی</h4>
+            <p>همه اعضای خانواده فرصت <strong>رشد و بهبود</strong> پیدا می‌کنند</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">اعتماد متقابل</h4>
+            <p>افزایش <strong>صداقت و اعتماد</strong> بین اعضای خانواده</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">آموزش غیرمستقیم</h4>
+            <p>کودکان <strong>انتقادپذیری</strong> را به طور عملی می‌آموزند</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">حل مشکلات</h4>
+            <p>مشکلات قبل از حاد شدن <strong>شناسایی و حل</strong> می‌شوند</p>
+        </div>
+    </div>
+    
+    <div class="quote">
+        <p>«شنیدن انتقاد مانند این است که کسی به ما بگوید پیشانیمان کثیف است. اگر نپذیریم، کل روز با پیشانی کثیف خواهیم بود، اما اگر بپذیریم، می‌توانیم آن را تمیز کنیم و با آرامش ادامه دهیم.»</p>
+    </div>
+    
+    <div class="practice-box">
+        <h3 class="content-heading">تمرین عملی این جلسه:</h3>
+        <p>۱. از <strong>سه نفر</strong> از نزدیکان خود (همسر، دوست، همکار) بخواهید <strong>یک انتقاد سازنده</strong> از شما بیان کنند.</p>
+        <p>۲. هنگام شنیدن انتقاد، <strong>فقط گوش دهید</strong> و از دفاع از خود بپرهیزید.</p>
+        <p>۳. از منتقد <strong>تشکر کنید</strong> و برای بهبود آن نقطه ضعف <strong>برنامه‌ریزی کنید</strong>.</p>
+        <p>۴. این روند را <strong>ماهانه تکرار کنید</strong> تا فرهنگ انتقادپذیری در روابط شما نهادینه شود.</p>
+    </div>
+
+    <!-- آزمون جلسه شصتم -->
+    <div class="quiz-container" id="quiz-session-60">
+        <h3 class="content-heading">آزمون جلسه شصتم: اهمیت شنیدن انتقادات</h3>
+        
+        <div class="quiz-question">
+            <p>1. شنیدن انتقادات در این جلسه به چه چیزی تشبیه شده است؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q1" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">دیدن عیوب پیشانی</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">شنیدن موسیقی</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">خواندن کتاب</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">تماشای طبیعت</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>2. اولین واکنش مناسب هنگام شنیدن انتقاد چیست؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q2" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">تشکر از منتقد</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">دفاع از خود</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">انتقاد متقابل</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">نادیده گرفتن</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>3. عدم استقبال از انتقادات چه نتیجه‌ای دارد؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q3" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">محرومیت از رشد</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">افزایش محبوبیت</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">کاهش استرس</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">راحتی بیشتر</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>4. انتقاد کردن در اسلام معادل چه مفهومی است؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q4" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">نهی از منکر</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">غیبت کردن</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">تهمت زدن</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">ستایش کردن</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>5. بهترین حالت برای بیان انتقاد به همسر چیست؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q5" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">پس از استراحت کافی</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">بلافاصله پس از کار</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">در جمع دوستان</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">هنگام خستگی</span>
+                </label>
+            </div>
+        </div>
+        
+        <button class="submit-quiz" data-session="60">ثبت آزمون</button>
+        
+        <div class="quiz-result" style="display: none;"></div>
+    </div>
+
+    <!-- کد دکمه‌های پیمایش بین جلسات -->
+    <div class="session-navigation">
+        <button class="nav-btn prev-btn" onclick="navigateToSession('prev')">جلسه قبل</button>
+        <button class="nav-btn next-btn" onclick="navigateToSession('next')">جلسه بعد</button>
+    </div>
+</div>
 
 
 
@@ -23225,6 +23590,78 @@ quizAnswers[59] = {
     q4: "A",
     q5: "A"
 };
+
+
+
+
+// کد جاوااسکریپت برای نمودار مزایای شنیدن انتقادات
+document.addEventListener('DOMContentLoaded', function() {
+    // ایجاد نمودار مزایای شنیدن انتقادات
+    const criticismBenefitsCtx = document.getElementById('criticismBenefitsChart');
+    if (criticismBenefitsCtx) {
+        new Chart(criticismBenefitsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['شناسایی عیوب پنهان', 'رشد شخصی', 'بهبود روابط', 'ایجاد اعتماد', 'حل مشکلات'],
+                datasets: [{
+                    label: 'میزان تأثیر',
+                    data: [90, 85, 80, 75, 70],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(255, 159, 64, 0.8)',
+                        'rgba(255, 99, 132, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'درصد تأثیر'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'مزایای شنیدن انتقادات',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+});
+
+// اضافه کردن پاسخ‌های صحیح جلسه شصتم
+quizAnswers[60] = {
+    q1: "A",
+    q2: "A", 
+    q3: "A",
+    q4: "A",
+    q5: "A"
+};
+
+
 
 
 
