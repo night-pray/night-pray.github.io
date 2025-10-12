@@ -2072,7 +2072,92 @@ body.dark-mode .gratitude-practice {
     background: linear-gradient(135deg, #2d3e2d 0%, #3d4a3d 100%);
 }
 
+/* استایل‌های اضافی برای جلسه ۶۴ */
+/* این استایل‌ها در صورت نیاز به فایل CSS اصلی اضافه شوند */
 
+.hamd-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.hamd-benefit {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.hamd-benefit:hover {
+    transform: translateY(-5px);
+}
+
+.hamd-benefit-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hamd-benefit-title {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* حالت شب برای کارت‌های فضیلت‌ها */
+body.dark-mode .hamd-benefit {
+    background: linear-gradient(135deg, #2d3e2d 0%, #3d4a3d 100%);
+}
+
+/* استایل‌های ویژه برای جلسه ۶۴ */
+.recitation-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.recitation-method {
+    background-color: #f0f7ff;
+    padding: 20px;
+    border-radius: 10px;
+    border-right: 4px solid var(--primary-color);
+}
+
+.method-title {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.method-steps {
+    margin-top: 15px;
+}
+
+.method-step {
+    margin-bottom: 8px;
+    padding-right: 15px;
+    position: relative;
+}
+
+.method-step:before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* حالت شب */
+body.dark-mode .recitation-method {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .method-step:before {
+    color: #5d9cec;
+}
     </style>
 </head>
 <body>
@@ -2089,6 +2174,14 @@ body.dark-mode .gratitude-practice {
     <div class="container">
         <div class="sessions-list">
     <h2>فهرست جلسات</h2>
+  
+  
+  
+                <div class="session-item" data-session="64">
+    <div class="session-title">جلسه ۶۴: فضیلت‌ها و آثار سوره مبارکه حمد</div>
+    <div class="new-session-date" id="session-date-64">یکشنبه ۲۰ مهر ۱۴۰۴</div>
+</div>
+  
   
               <div class="session-item" data-session="63">
     <div class="session-title">سه ۶۳: فضایل و اهمیت سوره حمد در قرآن</div>
@@ -20557,7 +20650,298 @@ body.dark-mode .gratitude-practice {
 </div>
 
 
-
+<!-- محتوای جلسه ۶۴ -->
+<div class="session-details" id="session-64">
+    <h1 class="content-heading">جلسه شصت و چهارم: فضیلت‌ها و آثار سوره مبارکه حمد</h1>
+    
+    <!-- دکمه جدید برای کانال ایتا -->
+    <a href="https://eitaa.com/night_pray" class="ita-channel-btn" target="_blank">
+        <span class="ita-icon">📬</span>
+        فایل صوتی جلسه شصت و چهارم
+    </a>
+    
+    <div class="session-date">
+        <span class="date-icon">📅</span>
+        <span>یک‌شنبه ۲۰ مهر ۱۴۰۴</span>
+    </div>
+    
+    <div class="summary-box">
+        <h2 class="content-heading">خلاصه جلسه:</h2>
+        <p>این جلسه به بررسی <strong>فضیلت‌ها و آثار سوره مبارکه حمد</strong> می‌پردازد. این سوره چکیده‌ای از کل قرآن است و دارای فضیلت‌های بسیار برای <strong>شفا، توسعه رزق و روزی، و قضای حاجات</strong> می‌باشد.</p>
+    </div>
+    
+    <div class="key-points">
+        <h2 class="content-heading">نکات کلیدی:</h2>
+        <ul>
+            <li>سوره حمد <strong>چکیده‌ای از کل قرآن</strong> است</li>
+            <li>این سوره دارای <strong>فضیلت‌های بسیار</strong> برای شفا، توسعه رزق و قضای حاجات است</li>
+            <li>آثار سوره حمد با <strong>نزدیکی به حقیقت و معرفت</strong> قوی‌تر می‌شود</li>
+            <li><strong>اعتقاد و باور</strong> به آثار سوره، تأثیر آن را افزایش می‌دهد</li>
+            <li>سوره حمد <strong>جزء ارکان اصلی نماز</strong> است و باید در هر نماز خوانده شود</li>
+        </ul>
+    </div>
+    
+    <h2 class="content-heading">آثار و فضیلت‌های سوره حمد:</h2>
+    <div class="chart-container">
+        <canvas id="hamdBenefitsChart"></canvas>
+    </div>
+    
+    <h2 class="content-heading">انواع آثار سوره حمد:</h2>
+    <div class="content-grid">
+        <div class="card">
+            <h4 class="card-title">شفا از بیماری‌ها</h4>
+            <p>قرائت سوره حمد برای <strong>شفای هر بیماری</strong> مؤثر است مگر مرگ حتمی</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">توسعه رزق و روزی</h4>
+            <p>تلاوت سوره حمد باعث <strong>گشایش در روزی</strong> و برکت در زندگی می‌شود</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">قضای حاجات</h4>
+            <p>خواندن سوره حمد برای <strong>برآورده شدن حاجات</strong> و نیازها مؤثر است</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">دوری از فقر</h4>
+            <p>تلاوت سوره حمد هنگام ورود به خانه، <strong>فقر را دور و برکت را جلب</strong> می‌کند</p>
+        </div>
+    </div>
+    
+    <h2 class="content-heading">روش‌های استفاده از سوره حمد:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>هدف</th>
+                <th>روش اجرا</th>
+                <th>تعداد توصیه شده</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>شفای بیماری</strong></td>
+                <td>خواندن سوره حمد بر آب و نوشیدن آن</td>
+                <td>۷ تا ۷۰ بار</td>
+            </tr>
+            <tr>
+                <td><strong>توسعه رزق و روزی</strong></td>
+                <td>تلاوت در پنج نوبت نماز یومیه</td>
+                <td>۱۰۰ بار در روز</td>
+            </tr>
+            <tr>
+                <td><strong>قضای حاجات</strong></td>
+                <td>تلاوت با توجه و حضور قلب</td>
+                <td>مستمر و منظم</td>
+            </tr>
+            <tr>
+                <td><strong>دوری از فقر</strong></td>
+                <td>خواندن هنگام ورود به خانه</td>
+                <td>همراه با سوره توحید</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="method-box">
+        <h3 class="content-heading">شرایط مؤثر بودن تلاوت سوره حمد:</h3>
+        <p>۱. <strong>اعتقاد و باور</strong> به آثار و برکات سوره</p>
+        <p>۲. <strong>توجه و حضور قلب</strong> هنگام تلاوت</p>
+        <p>۳. <strong>استمرار و مداومت</strong> در خواندن</p>
+        <p>۴. <strong>ارتباط با هاله علوی</strong> و معصومین</p>
+    </div>
+    
+    <h2 class="content-heading">ویژگی‌های منحصر به فرد سوره حمد:</h2>
+    <div class="content-grid">
+        <div class="card">
+            <h4 class="card-title">چکیده قرآن</h4>
+            <p>سوره حمد <strong>خلاصه و چکیده‌ای از کل مضامین قرآن</strong> است</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">رکن نماز</h4>
+            <p>این سوره <strong>جزء واجبات نماز</strong> است و نمی‌توان آن را حذف کرد</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">جامعیت حمد</h4>
+            <p>حمد و ستایش خداوند <strong>محور اصلی این سوره</strong> است</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">استثنایی بودن</h4>
+            <p>سوره حمد دارای <strong>حقیقت خاص و ویژه‌ای</strong> در میان سوره‌هاست</p>
+        </div>
+    </div>
+    
+    <div class="quote">
+        <p>«سوره مبارکه حمد در واقع مثل یک نوشته‌های امروزی، یک چکیده‌ایست از کل قرآن. این سوره مبارکه استثناست و دارای حقیقت خاصیست.»</p>
+    </div>
+    
+    <div class="warning-box">
+        <h3 class="content-heading">تذکر مهم:</h3>
+        <p>دستورالعمل‌های مربوط به سوره حمد نیاز به <strong>استمرار و انتظام</strong> دارد و اثر آن با <strong>باور و اعتقاد</strong> قوی‌تر می‌شود. اینگونه نیست که با چند بار خواندن، اثر فوری داشته باشد.</p>
+    </div>
+    
+    <h2 class="content-heading">مراحل بهره‌برداری از سوره حمد:</h2>
+    <div class="flowchart">
+        <div class="flowchart-step">آشنایی با فضیلت‌ها</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">ایمان و باور قلبی</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">تلاوت با حضور قلب</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">استمرار در عمل</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">دریافت برکات</div>
+    </div>
+    
+    <div class="practice-box">
+        <h2 class="content-heading">تمرین عملی این جلسه:</h2>
+        <p>۱. <strong>آشنایی بیشتر</strong> با فضیلت‌های سوره حمد از طریق مطالعه</p>
+        <p>۲. <strong>تلاوت منظم</strong> سوره حمد با توجه و حضور قلب</p>
+        <p>۳. <strong>استفاده از دستورالعمل‌ها</strong> برای اهداف خاص (شفا، رزق، حاجات)</p>
+        <p>۴. <strong>شکرگزاری</strong> برای نعمت داشتن چنین سوره با برکتی</p>
+    </div>
+    
+    <!-- آزمون جلسه ۶۴ -->
+    <div class="quiz-container" id="quiz-session-64">
+        <h3 class="content-heading">آزمون جلسه شصت و چهارم: فضیلت‌ها و آثار سوره مبارکه حمد</h3>
+        
+        <div class="quiz-question">
+            <p>1. سوره حمد در مقایسه با کل قرآن چه ویژگی دارد؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q1" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">چکیده و خلاصه قرآن است</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">مهمترین سوره قرآن است</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">طولانی‌ترین سوره است</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">قدیمی‌ترین سوره است</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>2. کدام یک از آثار سوره حمد در این جلسه ذکر نشده است؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q2" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">شفای بیماری‌ها</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">توسعه رزق و روزی</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">طولانی شدن عمر</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">قضای حاجات</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>3. برای شفای بیماری با سوره حمد چند بار تلاوت توصیه شده است؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q3" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">۷ تا ۷۰ بار</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">۳ تا ۱۰ بار</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">۱۰۰ تا ۲۰۰ بار</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">فقط یک بار</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>4. کدام عامل در تأثیرگذاری سوره حمد بسیار مهم است؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q4" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">اعتقاد و باور قلبی</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">بلند خواندن</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">تند خواندن</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">خواندن در مسجد</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>5. سوره حمد در نماز چه جایگاهی دارد؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q5" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">جزء ارکان واجب نماز</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">مستحب است</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">اختیاری است</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">فقط در نماز صبح</span>
+                </label>
+            </div>
+        </div>
+        
+        <button class="submit-quiz" data-session="64">ثبت آزمون</button>
+        
+        <div class="quiz-result" style="display: none;"></div>
+    </div>
+    
+    <!-- کد دکمه‌های پیمایش بین جلسات -->
+    <div class="session-navigation">
+        <button class="nav-btn prev-btn" onclick="navigateToSession('prev')">جلسه قبل</button>
+        <button class="nav-btn next-btn" onclick="navigateToSession('next')">جلسه بعد</button>
+    </div>
+</div>
 
 
 
@@ -24745,7 +25129,70 @@ quizAnswers[63] = {
 };
 
 
+// کد جاوااسکریپت برای نمودار جلسه ۶۴
+document.addEventListener('DOMContentLoaded', function() {
+    // ایجاد نمودار آثار سوره حمد
+    const hamdBenefitsCtx = document.getElementById('hamdBenefitsChart');
+    if (hamdBenefitsCtx) {
+        new Chart(hamdBenefitsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['شفا از بیماری‌ها', 'توسعه رزق و روزی', 'قضای حاجات', 'دوری از فقر'],
+                datasets: [{
+                    label: 'میزان تأثیر',
+                    data: [90, 85, 80, 75],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(153, 102, 255, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'درصد تأثیر'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'آثار و فضیلت‌های سوره حمد',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+});
 
+// اضافه کردن پاسخ‌های صحیح جلسه ۶۴
+quizAnswers[64] = {
+    q1: "A",
+    q2: "C", 
+    q3: "A",
+    q4: "A",
+    q5: "A"
+};
 
 
 -
