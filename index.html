@@ -2233,6 +2233,129 @@ body.dark-mode .comparison-table tr:nth-child(even) {
 body.dark-mode .comparison-table td {
     border: 1px solid #555;
 }
+
+
+
+
+/* استایل بخش برچسب‌ها */
+.tags-section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+    font-family: var(--font-family);
+}
+
+.tags-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.tag {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+}
+
+.tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tag.active {
+    background: linear-gradient(135deg, var(--success-color), #66bb6a);
+    box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+}
+
+.tag-count {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* حالت شب برای برچسب‌ها */
+body.dark-mode .tags-section {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+}
+
+body.dark-mode .tag {
+    background: linear-gradient(135deg, #5d9cec, #6ba8e8);
+}
+
+body.dark-mode .tag.active {
+    background: linear-gradient(135deg, #4caf50, #66bb6a);
+}
+
+/* اسکرول بار برای برچسب‌ها */
+.tags-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tags-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.tags-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+body.dark-mode .tags-container::-webkit-scrollbar-track {
+    background: #3d3d3d;
+}
+
+body.dark-mode .tags-container::-webkit-scrollbar-thumb {
+    background: #5d9cec;
+}
+
+/* استایل ریسپانسیو */
+@media (max-width: 768px) {
+    .tags-section {
+        padding: 12px;
+    }
+    
+    .tags-section h3 {
+        font-size: 16px;
+    }
+    
+    .tag {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    
+    .tags-container {
+        max-height: 120px;
+        gap: 8px;
+    }
+}
     </style>
 </head>
 <body>
@@ -2244,6 +2367,28 @@ body.dark-mode .comparison-table td {
     <span class="sun-icon">☀️</span>
 </button>
     </header>
+    
+
+
+
+
+
+<!-- قبل از <div class="sessions-list"> این کد را اضافه کنید -->
+
+<!-- بخش برچسب‌ها و تگ‌ها -->
+<div class="tags-section">
+    <h3>برچسب‌های جلسات</h3>
+    <div class="tags-container" id="tagsContainer">
+        <!-- برچسب‌ها به صورت داینامیک در اینجا نمایش داده می‌شوند -->
+    </div>
+</div>
+
+
+
+
+
+
+
     
         
     <div class="container">
@@ -28897,6 +29042,255 @@ function navigateToSession(direction) {
         if (item.getAttribute('data-session') === sessionId.replace('session-', '')) {
             item.classList.add('active');
         }
+    });
+}
+
+
+
+// داده‌های برچسب‌های جلسات - این بخش را در ابتدای اسکریپت اضافه کنید
+const sessionTags = {
+    1: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    2: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    3: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    4: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    5: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    6: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    7: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    8: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    9: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    10: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    11: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    12: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    13: ["سیر و سلوک", "چله 35", "مرداد ماه"],
+    14: ["پاسخ به سوالات","چله 35", "شهریور ماه"],
+    15: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    16: ["پاسخ به سوالات","چله 35", "شهریور ماه"],
+    17: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    18: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    19: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    20: ["امام زمان","چله 35", "شهریور ماه",],
+    21: ["پاسخ به سوالات","چله 35", "شهریور ماه"],
+    22: ["پاسخ به سوالات","چله 35", "شهریور ماه"],
+    23: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    24: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    25: ["صبر","چله 35", "شهریور ماه"],
+    26: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    27: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    28: ["پاسخ به سوالات","چله 35", "شهریور ماه"],
+    29: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    30: ["حجاب","چله 35", "شهریور ماه"],
+    31: ["سیر و سلوک", "چله 35", "شهریور ماه"],
+    32: ["حجاب","چله 35", "شهریور ماه"],
+    33: ["نتایج جنگ","چله 35", "شهریور ماه"],
+    34: ["نتایج جنگ","چله 35", "شهریور ماه"],
+    35: ["نتایج جنگ","چله 35", "شهریور ماه"],
+    36: ["نتایج جنگ","چله 35", "شهریور ماه"],
+    37: ["نتایج جنگ","چله 35", "شهریور ماه"],
+    38: ["چله 36", "شهریور ماه"],
+    39: ["نتایج جنگ","چله 36", "شهریور ماه"],
+    40: ["نتایج جنگ","چله 36", "شهریور ماه"],
+    41: ["نتایج جنگ","چله 36", "شهریور ماه"],
+    42: ["نتایج جنگ","چله 36", "شهریور ماه"],
+    43: ["نتایج جنگ","چله 36", "شهریور ماه"],
+    44: ["نتایج جنگ","چله 36", "شهریور ماه"],
+    45: ["نتایج جنگ","چله 36", "مهر ماه"],
+    46: ["نتایج جنگ","چله 36", "مهر ماه"],
+    47: ["نتایج جنگ","چله 36", "مهر ماه"],
+    48: ["امام زمان","چله 36", "مهر ماه"],
+    49: ["نتایج جنگ","چله 36", "مهر ماه"],
+    50: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    51: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    52: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    53: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    54: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    55: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    56: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    57: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    58: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    59: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    60: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    61: ["سیر و سلوک", "چله 36", "مهر ماه"],
+    62: ["چله 36", "مهر ماه"],
+    63: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    64: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    65: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    66: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    67: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    68: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    69: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    70: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    71: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    72: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    73: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+    74: ["معرفت قرآنی","سوره حمد","چله 36","مهر ماه"],
+
+};
+
+// تابع ایجاد سیستم برچسب‌ها
+function initializeTagSystem() {
+    const tagsContainer = document.getElementById('tagsContainer');
+    const allTags = getAllTags();
+    
+    // ایجاد دکمه "همه جلسات"
+    const allSessionsTag = createTagElement("همه جلسات", "all", Object.keys(sessionTags).length);
+    allSessionsTag.classList.add('active');
+    tagsContainer.appendChild(allSessionsTag);
+    
+    // ایجاد برچسب‌های منحصربه‌فرد
+    const uniqueTags = [...new Set(allTags)];
+    uniqueTags.forEach(tag => {
+        const count = countTagOccurrences(tag);
+        const tagElement = createTagElement(tag, tag, count);
+        tagsContainer.appendChild(tagElement);
+    });
+}
+
+// تابع ایجاد المان برچسب
+function createTagElement(text, value, count) {
+    const tag = document.createElement('div');
+    tag.className = 'tag';
+    tag.innerHTML = `
+        ${text}
+        <span class="tag-count">${count}</span>
+    `;
+    
+    tag.addEventListener('click', () => {
+        // حذف حالت فعال از همه برچسب‌ها
+        document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+        // فعال کردن برچسب انتخاب شده
+        tag.classList.add('active');
+        
+        // فیلتر کردن جلسات بر اساس برچسب
+        filterSessionsByTag(value);
+    });
+    
+    return tag;
+}
+
+// تابع دریافت تمام برچسب‌ها از همه جلسات
+function getAllTags() {
+    let allTags = [];
+    Object.values(sessionTags).forEach(tags => {
+        allTags = allTags.concat(tags);
+    });
+    return allTags;
+}
+
+// تابع شمارش تعداد تکرار هر برچسب
+function countTagOccurrences(tagName) {
+    let count = 0;
+    Object.values(sessionTags).forEach(tags => {
+        if (tags.includes(tagName)) {
+            count++;
+        }
+    });
+    return count;
+}
+
+// تابع فیلتر کردن جلسات بر اساس برچسب
+function filterSessionsByTag(tag) {
+    const sessionItems = document.querySelectorAll('.session-item');
+    
+    if (tag === 'all') {
+        // نمایش همه جلسات
+        sessionItems.forEach(item => {
+            item.style.display = 'flex';
+        });
+    } else {
+        // نمایش فقط جلسات دارای برچسب انتخاب شده
+        sessionItems.forEach(item => {
+            const sessionId = item.getAttribute('data-session');
+            if (sessionTags[sessionId] && sessionTags[sessionId].includes(tag)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+}
+
+// راه‌اندازی سیستم برچسب‌ها پس از لود صفحه
+document.addEventListener('DOMContentLoaded', function() {
+    initializeTagSystem();
+    
+    // بقیه کدهای موجود...
+});
+
+
+
+// تابع پیدا کردن جدیدترین شماره جلسه
+function getLatestSessionNumber() {
+    const sessionNumbers = Object.keys(sessionTags).map(Number);
+    return Math.max(...sessionNumbers);
+}
+
+// تابع دریافت برچسب‌های جدیدترین جلسه (دینامیک)
+function getLatestSessionTags() {
+    const latestSession = getLatestSessionNumber();
+    return sessionTags[latestSession.toString()] || [];
+}
+
+// تابع مرتب‌سازی برچسب‌ها بر اساس جدیدترین جلسات
+function getSortedTagsByLatestSessions() {
+    const allTags = getAllTags();
+    const tagLastSession = {};
+    
+    Object.keys(sessionTags).forEach(sessionId => {
+        const sessionNum = parseInt(sessionId);
+        sessionTags[sessionId].forEach(tag => {
+            if (!tagLastSession[tag] || sessionNum > tagLastSession[tag]) {
+                tagLastSession[tag] = sessionNum;
+            }
+        });
+    });
+    
+    const uniqueTags = [...new Set(allTags)];
+    uniqueTags.sort((a, b) => {
+        const lastSessionA = tagLastSession[a] || 0;
+        const lastSessionB = tagLastSession[b] || 0;
+        return lastSessionB - lastSessionA;
+    });
+    
+    return uniqueTags;
+}
+
+// تابع ایجاد سیستم برچسب‌ها - نسخه دینامیک
+function initializeTagSystem() {
+    const tagsContainer = document.getElementById('tagsContainer');
+    tagsContainer.innerHTML = '';
+    
+    // ایجاد دکمه "همه جلسات" (فیکس و اول)
+    const allSessionsTag = createTagElement("همه جلسات", "all", Object.keys(sessionTags).length);
+    allSessionsTag.classList.add('active');
+    tagsContainer.appendChild(allSessionsTag);
+    
+    // دریافت برچسب‌های جدیدترین جلسه (دینامیک)
+    const latestSessionTags = getLatestSessionTags();
+    const sortedTags = getSortedTagsByLatestSessions();
+    
+    console.log("جدیدترین جلسه:", getLatestSessionNumber());
+    console.log("برچسب‌های جدیدترین جلسه:", latestSessionTags);
+    
+    // اولویت‌دهی به برچسب‌های جدیدترین جلسه
+    const prioritizedTags = [];
+    latestSessionTags.forEach(tag => {
+        if (sortedTags.includes(tag) && !prioritizedTags.includes(tag)) {
+            prioritizedTags.push(tag);
+        }
+    });
+    
+    // اضافه کردن بقیه برچسب‌ها
+    sortedTags.forEach(tag => {
+        if (!prioritizedTags.includes(tag)) {
+            prioritizedTags.push(tag);
+        }
+    });
+    
+    // ایجاد المان‌های برچسب
+    prioritizedTags.forEach(tag => {
+        const count = countTagOccurrences(tag);
+        const tagElement = createTagElement(tag, tag, count);
+        tagsContainer.appendChild(tagElement);
     });
 }
     </script>
