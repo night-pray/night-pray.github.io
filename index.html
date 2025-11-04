@@ -2466,6 +2466,16 @@ body.dark-mode .bar-container {
   
   
   
+  
+  
+  
+  
+  
+  
+        <div class="session-item" data-session="87">
+    <div class="session-title">جلسه ۸۷: سوره مبارکه بقره - آشنایی با سوره و فضیلت‌ها</div>
+    <div class="new-session-date" id="session-date-87">سه‌شنبه ۱۳ آبان ۱۴۰۴</div>
+</div>
     
           <div class="session-item" data-session="86">
     <div class="session-title">جلسه ۸۶: تفسیر سه آیه پایانی سوره حمد</div>
@@ -27648,7 +27658,6 @@ body.dark-mode .bar-container {
     </div>
 </div>
 
-
 <!-- محتوای جلسه ۸۶ -->
 <div class="session-details" id="session-86">
     <h1 class="content-heading">جلسه ۸۶: تفسیر سه آیه پایانی سوره حمد</h1>
@@ -27692,40 +27701,8 @@ body.dark-mode .bar-container {
     </div>
     
     <h2 class="content-heading">چهار گروه مورد نعمت الهی:</h2>
-   <!-- جایگزین ساده برای نمودار در صورت عدم کارکرد Chart.js -->
-<div class="simple-chart">
-    <h3 class="content-heading">چهار گروه مورد نعمت الهی</h3>
-    <div class="chart-bars">
-        <div class="chart-bar">
-            <div class="bar-label">انبیا و اولیا</div>
-            <div class="bar-container">
-                <div class="bar-fill" style="width: 25%; background-color: #4a89dc;"></div>
-                <span class="bar-value">25%</span>
-            </div>
-        </div>
-        <div class="chart-bar">
-            <div class="bar-label">صدیقین</div>
-            <div class="bar-container">
-                <div class="bar-fill" style="width: 30%; background-color: #5d9cec;"></div>
-                <span class="bar-value">30%</span>
-            </div>
-        </div>
-        <div class="chart-bar">
-            <div class="bar-label">شهدا</div>
-            <div class="bar-container">
-                <div class="bar-fill" style="width: 20%; background-color: #4caf50;"></div>
-                <span class="bar-value">20%</span>
-            </div>
-        </div>
-        <div class="chart-bar">
-            <div class="bar-label">صالحین</div>
-            <div class="bar-container">
-                <div class="bar-fill" style="width: 25%; background-color: #ff9800;"></div>
-                <span class="bar-value">25%</span>
-            </div>
-        </div>
-    </div>
-</div>
+    <div class="chart-container">
+        <canvas id="blessedGroupsChart"></canvas>
     </div>
     
     <h2 class="content-heading">تفاوت مغضوب علیهم و ضالین:</h2>
@@ -27953,8 +27930,291 @@ body.dark-mode .bar-container {
     </div>
 </div>
 
+<!-- محتوای جلسه ۸۷ -->
+<div class="session-details" id="session-87">
+    <h1 class="content-heading">جلسه ۸۷: سوره مبارکه بقره - آشنایی با سوره و فضیلت‌ها</h1>
+    
+    <!-- دکمه جدید برای کانال ایتا -->
+    <a href="https://eitaa.com/night_pray/3671" class="ita-channel-btn" target="_blank">
+        <span class="ita-icon">📬</span>
+        فایل صوتی جلسه هشتاد و هفتم
+    </a>
+    
+    <div class="session-date">
+        <span class="date-icon">📅</span>
+        <span>سه‌شنبه ۱۳ آبان ۱۴۰۴</span>
+    </div>
 
-
+    <div class="summary-box">
+        <h2 class="content-heading">خلاصه جلسه:</h2>
+        <p>این جلسه به <strong>آشنایی با سوره مبارکه بقره</strong>، <strong>فضیلت‌ها و آثار تلاوت آن</strong> و <strong>اهمیت ویژه آیت الکرسی</strong> می‌پردازد. سوره بقره طولانی‌ترین سوره قرآن با ۲۸۶ آیه است که در مدینه نازل شده است.</p>
+    </div>
+    
+    <div class="key-points">
+        <h2 class="content-heading">نکات کلیدی:</h2>
+        <ul>
+            <li>سوره بقره <strong>طولانی‌ترین سوره قرآن</strong> با ۲۸۶ آیه است</li>
+            <li>این سوره <strong>مدنی</strong> است و در مدینه نازل شده است</li>
+            <li>نام بقره از داستان <strong>گاو بنی‌اسرائیل</strong> (آیات ۶۷-۷۳) گرفته شده است</li>
+            <li>سوره بقره به <strong>فساط القرآن</strong> (خیمه بزرگ قرآن) نیز معروف است</li>
+            <li><strong>آیت الکرسی</strong> مهم‌ترین آیه این سوره با فضایل ویژه است</li>
+        </ul>
+    </div>
+    
+    <h2 class="content-heading">محورهای اصلی سوره بقره:</h2>
+    <div class="chart-container">
+        <canvas id="baqarahThemesChart"></canvas>
+    </div>
+    
+    <h2 class="content-heading">مضامین و موضوعات سوره بقره:</h2>
+    <div class="content-grid">
+        <div class="card">
+            <h4 class="card-title">توحید و شناخت خداوند</h4>
+            <p>بحث‌های عمیق درباره شناخت و عبادت پروردگار</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">معاد و قیامت</h4>
+            <p>حوادث مربوط به معاد و داستان‌های عبرت‌آموز</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">اعجاز قرآن</h4>
+            <p>آیاتی که بر معجزه بودن قرآن تأکید دارند</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">قضایای یهود و منافقین</h4>
+            <p>شخصیت‌شناسی و موضع‌گیری‌های این گروه‌ها</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">تاریخ انبیا</h4>
+            <p>داستان‌های حضرت ابراهیم و حضرت موسی (ع)</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">احکام اسلامی</h4>
+            <p>نماز، روزه، حج، جهاد، ازدواج، طلاق و...</p>
+        </div>
+    </div>
+    
+    <h2 class="content-heading">فضیلت‌های سوره بقره:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>فضیلت</th>
+                <th>منبع</th>
+                <th>توضیح</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>درود و رحمت الهی</strong></td>
+                <td>پیامبر اکرم (ص)</td>
+                <td>ثواب مانند یک سال جهاد در راه خدا</td>
+            </tr>
+            <tr>
+                <td><strong>برکت در خانه</strong></td>
+                <td>پیامبر اکرم (ص)</td>
+                <td>خانه‌ای که سوره بقره خوانده نشود، خالی از خیر است</td>
+            </tr>
+            <tr>
+                <td><strong>دفع سحر و جادو</strong></td>
+                <td>ابی‌ابن‌کعب</td>
+                <td>یادگیری آن مایه برکت و ترکش مایه حسرت است</td>
+            </tr>
+            <tr>
+                <td><strong>امان از شیطان</strong></td>
+                <td>پیامبر اکرم (ص)</td>
+                <td>تلاوت در خانه، سه روز از گزند شیطان در امان می‌دارد</td>
+            </tr>
+            <tr>
+                <td><strong>سایه‌بان قیامت</strong></td>
+                <td>امام صادق (ع)</td>
+                <td>با آل عمران مانند ابر بر انسان سایه می‌افکنند</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2 class="content-heading">آیت الکرسی - گوهر سوره بقره:</h2>
+    <div class="method-box">
+        <h3 class="content-heading">ویژگی‌های آیت الکرسی:</h3>
+        <p><strong>آیت الکرسی</strong> مهم‌ترین و برجسته‌ترین آیه سوره بقره است که:</p>
+        <ul>
+            <li>دارای <strong>خواص عجیب</strong> و آثار معنوی فراوان است</li>
+            <li>آیه <strong>حفظ و امان</strong> از بلاها و خطرات است</li>
+            <li><strong>مداومت</strong> بر خواندن آن بعد از نماز بسیار توصیه شده است</li>
+            <li>خواننده آن به <strong>مقام صدیقین و شهدا</strong> می‌رسد</li>
+        </ul>
+    </div>
+    
+    <div class="flowchart">
+        <div class="flowchart-step">تلاوت سوره بقره</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">برکت و نورانیت</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">دفع شیطان و سحر</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">قرب به خداوند</div>
+    </div>
+    
+    <div class="warning-box">
+        <h4>تذکر مهم:</h4>
+        <p>فضایل و آثار ذکر شده برای سوره بقره و آیات آن، نیاز به <strong>مداومت و توجه قلبی</strong> دارد. صرف خواندن بدون تدبر و توجه، اثر کامل را نخواهد داشت.</p>
+    </div>
+    
+    <div class="quote">
+        <p>«سوره بقره فساط القرآن است - یعنی خیمه بزرگ قرآن که جامع حقایق قرآنی است.»</p>
+    </div>
+    
+    <h2 class="content-heading">تمرین عملی این جلسه:</h2>
+    <div class="practice-box">
+        <p>۱. <strong>آیت الکرسی</strong> را هر روز بعد از نمازهای یومیه بخوانید و بر آن مداومت کنید.</p>
+        <p>۲. برنامه‌ریزی کنید تا در <strong>یک ماه</strong> کل سوره بقره را ختم کنید (روزی حدود ۱۰ آیه).</p>
+        <p>۳. در <strong>خانه خود</strong> حداقل هفته‌ای یک بار تلاوت سوره بقره داشته باشید.</p>
+        <p>۴. درباره <strong>فضایل سوره بقره</strong> با خانواده خود صحبت کنید و آنان را به تلاوت تشویق کنید.</p>
+    </div>
+    
+    <div class="quiz-container" id="quiz-session-87">
+        <h3 class="content-heading">آزمون سنجش یادگیری جلسه ۸۷</h3>
+        
+        <div class="quiz-question">
+            <p>1. سوره بقره چند آیه دارد؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q1" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">۲۸۶ آیه</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">۲۰۰ آیه</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">۱۷۶ آیه</span>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">۱۵۰ آیه</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>2. نام بقره از چه داستانی گرفته شده است؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q2" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">گاو بنی‌اسرائیل</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">گوسفند حضرت ابراهیم</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">شتر حضرت صالح</span>
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">گاو حضرت موسی</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>3. مهمترین آیه سوره بقره کدام است؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q3" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">آیت الکرسی</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">آیه نور</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">آیه تطهیر</span>
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">آیه مباهاه</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>4. سوره بقره به چه نام دیگری معروف است؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q4" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">فساط القرآن</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">قلب القرآن</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">روح القرآن</span>
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">نور القرآن</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="quiz-question">
+            <p>5. ثواب تلاوت سوره بقره معادل چیست؟</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q5" value="A">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">یک سال جهاد</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="B">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">هفتاد بار حج</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="C">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">هزار رکعت نماز</span>
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="D">
+                    <span class="custom-checkbox"></span>
+                    <span class="option-text">صد ماه روزه</span>
+                </label>
+            </div>
+        </div>
+        
+        <button class="submit-quiz" data-session="87">ثبت آزمون</button>
+        
+        <div class="quiz-result" style="display: none;"></div>
+    </div>
+    
+    <!-- کد دکمه‌های پیمایش بین جلسات -->
+    <div class="session-navigation">
+        <button class="nav-btn prev-btn" onclick="navigateToSession('prev')">جلسه قبل</button>
+        <button class="nav-btn next-btn" onclick="navigateToSession('next')">جلسه بعد</button>
+    </div>
+</div>
 
 
 
@@ -33270,36 +33530,40 @@ quizAnswers[85] = {
     q5: "A"
 };
 
-// نسخه ساده‌تر و مطمئن‌تر برای نمودار
+// کد جاوااسکریپت برای نمودار گروه‌های مورد نعمت
 document.addEventListener('DOMContentLoaded', function() {
-    // صبر کردن تا صفحه کاملاً بارگذاری شود
-    setTimeout(function() {
-        const blessedGroupsCanvas = document.getElementById('blessedGroupsChart');
-        
-        if (blessedGroupsCanvas) {
-            const blessedGroupsCtx = blessedGroupsCanvas.getContext('2d');
-            
-            new Chart(blessedGroupsCtx, {
-                type: 'pie',
-                data: {
-                    labels: ['انبیا و اولیا', 'صدیقین', 'شهدا', 'صالحین'],
-                    datasets: [{
-                        data: [25, 30, 20, 25],
-                        backgroundColor: ['#4a89dc', '#5d9cec', '#4caf50', '#ff9800']
-                    }]
+    // ایجاد نمودار گروه‌های مورد نعمت
+    const blessedGroupsCtx = document.getElementById('blessedGroupsChart').getContext('2d');
+    const blessedGroupsChart = new Chart(blessedGroupsCtx, {
+        type: 'pie',
+        data: {
+            labels: ['انبیا و اولیا', 'صدیقین', 'شهدا', 'صالحین'],
+            datasets: [{
+                data: [30, 25, 20, 25],
+                backgroundColor: [
+                    '#4a89dc',
+                    '#5d9cec',
+                    '#4caf50',
+                    '#ff9800'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    rtl: true
                 },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            rtl: true
-                        }
-                    }
+                title: {
+                    display: true,
+                    text: 'چهار گروه مورد نعمت الهی در صراط مستقیم',
+                    rtl: true
                 }
-            });
+            }
         }
-    }, 100);
+    });
 });
 
 // اضافه کردن پاسخ‌های صحیح جلسه ۸۶
@@ -33311,8 +33575,56 @@ quizAnswers[86] = {
     q5: "A"
 };
 
+// کد جاوااسکریپت برای نمودار محورهای سوره بقره
+document.addEventListener('DOMContentLoaded', function() {
+    // ایجاد نمودار محورهای سوره بقره
+    const baqarahThemesCtx = document.getElementById('baqarahThemesChart');
+    if (baqarahThemesCtx) {
+        new Chart(baqarahThemesCtx, {
+            type: 'pie',
+            data: {
+                labels: ['توحید و شناخت خدا', 'معاد و قیامت', 'اعجاز قرآن', 'قضایای یهود', 'تاریخ انبیا', 'احکام اسلامی'],
+                datasets: [{
+                    data: [20, 15, 10, 25, 15, 15],
+                    backgroundColor: [
+                        '#4a89dc',
+                        '#5d9cec',
+                        '#4caf50',
+                        '#ff9800',
+                        '#9c27b0',
+                        '#f44336'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        rtl: true
+                    },
+                    title: {
+                        display: true,
+                        text: 'محورهای اصلی سوره بقره',
+                        font: {
+                            size: 16
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
 
-
+// اضافه کردن پاسخ‌های صحیح جلسه ۸۷
+quizAnswers[87] = {
+    q1: "A",
+    q2: "A", 
+    q3: "A",
+    q4: "A",
+    q5: "A"
+};
 
 
 
@@ -33487,7 +33799,8 @@ const sessionTags = {
     83: ["معرفت قرآنی","سوره حمد","چله 37","آبان ماه"],    
         84: ["معرفت قرآنی","سوره حمد","چله 37","آبان ماه"],    
         85: ["معرفت قرآنی","سوره حمد","چله 37","آبان ماه"],     
-85: ["معرفت قرآنی","سوره حمد","چله 37","آبان ماه"],                           
+86: ["معرفت قرآنی","سوره حمد","چله 37","آبان ماه"],
+87: ["معرفت قرآنی","سوره بقره","چله 37","آبان ماه"],
 };
 
 // تابع ایجاد سیستم برچسب‌ها
