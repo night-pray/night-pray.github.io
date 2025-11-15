@@ -2760,6 +2760,155 @@ body.dark-mode .pie-chart {
         font-size: 18px;
     }
 }
+
+/* استایل‌های جدید برای نمودار دایره‌ای */
+.chart-container-simple {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.chart-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4a89dc;
+    margin-bottom: 25px;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.pie-chart {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto 30px;
+    background: conic-gradient(
+        #4a89dc 0deg 252deg,  /* 70% - ارتباط سطحی */
+        #5d9cec 252deg 360deg /* 30% - ارتباط عمیق */
+    );
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pie-segment {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+.pie-segment.takvini {
+    background: #4a89dc;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+.pie-segment.tashrii {
+    background: #5d9cec;
+    clip-path: polygon(50% 50%, 50% 0%, 0% 0%, 0% 100%, 50% 100%);
+    transform: rotate(252deg);
+}
+
+.segment-label {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.pie-segment.takvini .segment-label {
+    top: 30%;
+    right: 20%;
+}
+
+.pie-segment.tashrii .segment-label {
+    top: 30%;
+    left: 20%;
+    transform: rotate(-252deg);
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 14px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-box.takvini {
+    background: #4a89dc;
+}
+
+.color-box.tashrii {
+    background: #5d9cec;
+}
+
+/* حالت شب */
+body.dark-mode .chart-container-simple {
+    background: #2d2d2d;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .chart-title {
+    color: #5d9cec;
+}
+
+body.dark-mode .pie-chart {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .chart-container-simple {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .pie-chart {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .chart-legend {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .segment-label {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pie-chart {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .chart-title {
+        font-size: 18px;
+    }
+}
     </style>
 </head>
 <body>
@@ -2804,6 +2953,17 @@ body.dark-mode .pie-chart {
   
   
   
+  
+  
+  
+  
+  
+  
+  
+               <div class="session-item" data-session="98">
+    <div class="session-title">جلسه ۹۸: اهمیت فهم و ارتباط با قرآن</div>
+    <div class="new-session-date" id="session-date-98">شنبه ۲۴ آبان ۱۴۰۴</div>
+</div>
   
              <div class="session-item" data-session="97">
     <div class="session-title">جلسه ۹۷: اهمیت تفسیر قرآن در مسیر سیر و سلوک</div>
@@ -31584,7 +31744,324 @@ body.dark-mode .pie-chart {
     </div>
 </div>
 
+<!-- محتوای جلسه ۹۸ -->
+<div class="session-details" id="session-98">
+    <h1 class="content-heading">جلسه ۹۸: اهمیت فهم و ارتباط با قرآن</h1>
+    
+    <!-- دکمه جدید برای کانال ایتا -->
+    <a href="https://eitaa.com/night_pray" class="ita-channel-btn" target="_blank">
+        <span class="ita-icon">📬</span>
+        فایل صوتی جلسه نود و هشتم
+    </a>
+    
+    <div class="session-date">
+        <span class="date-icon">📅</span>
+        <span>شنبه ۲۴ آبان ۱۴۰۴</span>
+    </div>
 
+    <div class="summary-box">
+        <h2 class="content-heading">خلاصه جلسه:</h2>
+        <p>این جلسه بر اهمیت <strong>فهم و ارتباط عمیق با قرآن</strong> به عنوان <strong>عالی‌ترین حقیقت و هدایت</strong> تأکید دارد. قرآن باید بر <strong>دینداری سطحی</strong> و <strong>مطالب کم‌ارزش</strong> اولویت داده شود.</p>
+    </div>
+    
+    <div class="key-points">
+        <h2 class="content-heading">نکات کلیدی:</h2>
+        <ul>
+            <li>قرآن <strong>عالی‌ترین حقیقت و هدایت</strong> در عالم است</li>
+            <li>باید از <strong>دینداری سطحی و کودکانه</strong> پرهیز کرد</li>
+            <li>قرآن <strong>غذای اصلی معنوی</strong> است، نه شعر و قصه و خواب</li>
+            <li><strong>مهجوریت قرآن</strong> بزرگترین مشکل جامعه ایمانی است</li>
+            <li>شکرگزاری از نعمت قرآن با <strong>استفاده صحیح</strong> از آن انجام می‌شود</li>
+        </ul>
+    </div>
+    
+    <h2 class="content-heading">مقایسه دینداری عمیق و سطحی:</h2>
+<!-- نمودار دایره‌ای ساده و سالم -->
+<div class="chart-container-simple">
+    <div class="chart-title">نحوه ارتباط مردم با قرآن</div>
+    
+    <div class="pie-chart">
+        <div class="pie-segment takvini">
+            <div class="segment-label">ارتباط سطحی ۷۰٪</div>
+        </div>
+        <div class="pie-segment tashrii">
+            <div class="segment-label">ارتباط عمیق ۳۰٪</div>
+        </div>
+    </div>
+    
+    <div class="chart-legend">
+        <div class="legend-item">
+            <div class="color-box takvini"></div>
+            <span>ارتباط سطحی (خواندن بدون فهم)</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box tashrii"></div>
+            <span>ارتباط عمیق (فهم و به کارگیری)</span>
+        </div>
+    </div>
+</div>
+    
+    <h2 class="content-heading">مراتب دینداری:</h2>
+    <div class="content-grid">
+        <div class="card">
+            <h4 class="card-title">دینداری عمیق</h4>
+            <p>تمرکز بر <strong>مفاهیم و حقایق قرآنی</strong>، درک معانی، پایبندی به اصول</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">دینداری سطحی</h4>
+            <p>توجه به <strong>شعر و قصه و خواب</strong>، ظواهر دین، عدم درک مفاهیم</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">مهجوریت قرآن</h4>
+            <p><strong>عدم ارتباط واقعی</strong> با قرآن، خواندن بدون فهم، اولویت دادن به مطالب دیگر</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">ارتباط زنده با قرآن</h4>
+            <p><strong>تلاوت با فهم</strong>، درک معانی، به کارگیری در زندگی، اولویت دادن به قرآن</p>
+        </div>
+    </div>
+    
+    <h2 class="content-heading">آثار مثبت و منفی ارتباط با قرآن:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ارتباط صحیح با قرآن</th>
+                <th>مهجوریت قرآن</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>هدایت و رشد معنوی</strong></td>
+                <td><strong>گمراهی و انحراف</strong></td>
+            </tr>
+            <tr>
+                <td><strong>ثبات قدم در دین</strong></td>
+                <td><strong>سستی و تزلزل ایمانی</strong></td>
+            </tr>
+            <tr>
+                <td><strong>شکرگزاری واقعی</strong></td>
+                <td><strong>کفران نعمت</strong></td>
+            </tr>
+            <tr>
+                <td><strong>نورانیت قلب و روح</strong></td>
+                <td><strong>تاریکی و غفلت</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="warning-box">
+        <h4>هشدار مهم:</h4>
+        <p><strong>مهجوریت قرآن</strong> فقط به معنی نخواندن آن نیست، بلکه به معنی <strong>عدم ارتباط واقعی</strong> با مفاهیم و حقایق آن است. حتی کسانی که قرآن می‌خوانند اما معانی آن را درک نمی‌کنند، قرآن را مهجور گذاشته‌اند.</p>
+    </div>
+    
+    <h2 class="content-heading">مراحل ارتباط عمیق با قرآن:</h2>
+    <div class="flowchart">
+        <div class="flowchart-step">تلاوت قرآن</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">فهم معانی</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">درک حقایق</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">به کارگیری در زندگی</div>
+    </div>
+    
+    <div class="method-box">
+        <h4>راهکارهای عملی برای ارتباط با قرآن:</h4>
+        <p>۱. <strong>تلاوت روزانه</strong> با توجه به معانی</p>
+        <p>۲. <strong>مطالعه تفسیر</strong> برای درک بهتر مفاهیم</p>
+        <p>۳. <strong>اولویت دادن به قرآن</strong> بر دیگر مطالب</p>
+        <p>۴. <strong>به کارگیری آیات</strong> در زندگی روزمره</p>
+        <p>۵. <strong>شرکت در جلسات تفسیر</strong> و معارف قرآنی</p>
+    </div>
+    
+    <div class="quote">
+        <p>«قرآن <strong>کلام خداست</strong> که از دو لبه مبارک حضرت حق صادر شده است. وقتی پای صحبت قرآن می‌نشینید، در واقع <strong>پای صحبت خدا</strong> نشسته‌اید.»</p>
+    </div>
+    
+    <h2 class="content-heading">جدول مرور سریع:</h2>
+    <table class="review-table">
+        <thead>
+            <tr>
+                <th>مفهوم کلیدی</th>
+                <th>توضیح مختصر</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>قرآن</strong></td>
+                <td>عالی‌ترین حقیقت و هدایت در عالم</td>
+            </tr>
+            <tr>
+                <td><strong>مهجوریت قرآن</strong></td>
+                <td>بزرگترین مشکل جامعه ایمانی</td>
+            </tr>
+            <tr>
+                <td><strong>دینداری سطحی</strong></td>
+                <td>توجه به شعر و قصه به جای مفاهیم قرآنی</td>
+            </tr>
+            <tr>
+                <td><strong>شکرگزاری</strong></td>
+                <td>استفاده صحیح از نعمت قرآن</td>
+            </tr>
+            <tr>
+                <td><strong>ارتباط عمیق</strong></td>
+                <td>تلاوت با فهم و به کارگیری در زندگی</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="practice-box">
+        <h2 class="content-heading">تمرین عملی این جلسه:</h2>
+        <p>۱. هر روز <strong>حداقل ۱۰ دقیقه</strong> به تلاوت قرآن با توجه به معانی اختصاص دهید.</p>
+        <p>۲. <strong>یک آیه</strong> از قرآن انتخاب کرده و درباره معنی و مفهوم آن تحقیق کنید.</p>
+        <p>۳. <strong>یک مورد</strong> از مهجوریت قرآن در زندگی خود را شناسایی و برای رفع آن برنامه‌ریزی کنید.</p>
+        <p>۴. <strong>یک تغییر عملی</strong> بر اساس مفاهیم قرآنی در زندگی خود ایجاد کنید.</p>
+    </div>
+    
+    <div class="quiz-container" id="quiz-session-98">
+        <h3 class="content-heading">آزمون سنجش یادگیری جلسه ۹۸</h3>
+        <div class="quiz-questions">
+            <div class="quiz-question">
+                <p>1. قرآن در این جلسه به عنوان چه چیزی معرفی شده است؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q1" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">عالی‌ترین حقیقت و هدایت</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">یک کتاب تاریخی</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">مجموعه‌ای از داستان‌ها</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">کتاب قوانین اجتماعی</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>2. مهجوریت قرآن به چه معناست؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q2" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">عدم ارتباط واقعی با قرآن</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">نداشتن قرآن در خانه</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">خواندن قرآن به زبان عربی</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">حفظ کردن قرآن</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>3. دینداری سطحی شامل توجه به چه چیزهایی است؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q3" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">شعر و قصه و خواب</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">مفاهیم عمیق قرآنی</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">تفسیرهای علمی</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">مسائل فقهی پیچیده</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>4. شکرگزاری از نعمت قرآن چگونه انجام می‌شود؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q4" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">با استفاده صحیح از آن</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">با خرید قرآن نفیس</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">با قرار دادن در جایگاه بلند</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">با تلاوت سریع</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>5. اولین مرحله در ارتباط عمیق با قرآن چیست؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q5" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">تلاوت قرآن</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">حفظ قرآن</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">تفسیر قرآن</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">ترجمه قرآن</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <button class="submit-quiz" data-session="98">ثبت آزمون</button>
+        <div class="quiz-result" style="display: none;"></div>
+    </div>
+    
+    <!-- کد دکمه‌های پیمایش بین جلسات -->
+    <div class="session-navigation">
+        <button class="nav-btn prev-btn" onclick="navigateToSession('prev')">جلسه قبل</button>
+        <button class="nav-btn next-btn" onclick="navigateToSession('next')">جلسه بعد</button>
+    </div>
+</div>
 
 
 
@@ -37564,7 +38041,63 @@ quizAnswers[97] = {
 };
 
 
+// کد جاوااسکریپت برای نمودار مقایسه دینداری
+document.addEventListener('DOMContentLoaded', function() {
+    // ایجاد نمودار مقایسه دینداری عمیق و سطحی
+    const religionCtx = document.getElementById('religionComparisonChart');
+    if (religionCtx) {
+        new Chart(religionCtx, {
+            type: 'bar',
+            data: {
+                labels: ['هدایت واقعی', 'ثبات ایمان', 'رشد معنوی', 'نورانیت قلب'],
+                datasets: [
+                    {
+                        label: 'دینداری عمیق',
+                        data: [90, 85, 88, 92],
+                        backgroundColor: '#4caf50',
+                        borderColor: '#388e3c',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'دینداری سطحی',
+                        data: [30, 25, 20, 15],
+                        backgroundColor: '#f44336',
+                        borderColor: '#d32f2f',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'درصد تأثیر'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'مقایسه تأثیر دینداری عمیق و سطحی'
+                    }
+                }
+            }
+        });
+    }
+});
 
+// اضافه کردن پاسخ‌های صحیح جلسه ۹۸
+quizAnswers[98] = {
+    q1: "A",
+    q2: "A", 
+    q3: "A",
+    q4: "A",
+    q5: "A"
+};
 
 
 
@@ -37754,7 +38287,8 @@ const sessionTags = {
 94: ["سوره بقره","معرفت قرآنی","چله 37","آبان ماه"],
 95: ["سوره بقره","معرفت قرآنی","چله 37","آبان ماه"],
 96: ["سوره بقره","معرفت قرآنی","چله 37","آبان ماه"],
-97: ["سوره بقره","معرفت قرآنی","چله 37","آبان ماه"],
+97: ["معرفت قرآنی","چله 37","آبان ماه"],
+98: ["سوره بقره","معرفت قرآنی","چله 37","آبان ماه"],
 };
 
 // تابع ایجاد سیستم برچسب‌ها
