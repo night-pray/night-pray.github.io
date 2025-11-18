@@ -3101,6 +3101,238 @@ body.dark-mode .pie-chart {
         grid-template-columns: 1fr;
     }
 }
+
+/* استایل‌های نمودار ویژگی‌های متقین - نسخه ریسپانسیو */
+.muttaqeen-chart-container {
+    width: 100%;
+    margin: 25px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.muttaqeen-chart {
+    width: 100%;
+    min-height: 350px;
+    position: relative;
+    direction: ltr;
+}
+
+.chart-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.chart-title {
+    color: #4a89dc;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.chart-subtitle {
+    color: #666;
+    font-size: 14px;
+}
+
+.chart-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.chart-item:hover {
+    transform: translateX(5px);
+}
+
+.feature-name {
+    flex: 0 0 150px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    font-size: 14px;
+}
+
+.chart-bar-container {
+    flex: 1;
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.chart-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4a89dc, #5d9cec);
+    border-radius: 15px;
+    transition: width 1s ease-in-out;
+    width: 0;
+    position: relative;
+}
+
+.bar-value {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.percentage-label {
+    flex: 0 0 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #4a89dc;
+    font-size: 14px;
+}
+
+/* حالت شب */
+body.dark-mode .muttaqeen-chart-container {
+    background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
+}
+
+body.dark-mode .chart-item {
+    background: #3d3d3d;
+}
+
+body.dark-mode .feature-name {
+    color: #f0f0f0;
+}
+
+body.dark-mode .chart-bar-container {
+    background: #555;
+}
+
+body.dark-mode .chart-bar {
+    background: linear-gradient(90deg, #5d9cec, #6ba8e8);
+}
+
+body.dark-mode .percentage-label {
+    color: #5d9cec;
+}
+
+body.dark-mode .chart-subtitle {
+    color: #ccc;
+}
+
+/* ریسپانسیو برای تبلت */
+@media (max-width: 768px) {
+    .muttaqeen-chart-container {
+        padding: 15px;
+    }
+    
+    .chart-title {
+        font-size: 16px;
+    }
+    
+    .feature-name {
+        flex: 0 0 120px;
+        font-size: 13px;
+    }
+    
+    .percentage-label {
+        flex: 0 0 40px;
+        font-size: 13px;
+    }
+    
+    .chart-item {
+        gap: 10px;
+        padding: 8px;
+    }
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 480px) {
+    .muttaqeen-chart-container {
+        padding: 10px;
+        margin: 15px 0;
+    }
+    
+    .chart-header {
+        margin-bottom: 20px;
+    }
+    
+    .chart-title {
+        font-size: 14px;
+    }
+    
+    .chart-subtitle {
+        font-size: 12px;
+    }
+    
+    .chart-content {
+        gap: 10px;
+    }
+    
+    .chart-item {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        text-align: center;
+    }
+    
+    .feature-name {
+        flex: none;
+        width: 100%;
+        font-size: 13px;
+        text-align: center;
+    }
+    
+    .chart-bar-container {
+        width: 100%;
+        height: 25px;
+    }
+    
+    .percentage-label {
+        flex: none;
+        width: 100%;
+        font-size: 12px;
+    }
+    
+    .bar-value {
+        font-size: 11px;
+        right: 8px;
+    }
+}
+
+/* انیمیشن برای نمودار */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.chart-item {
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+.chart-item:nth-child(1) { animation-delay: 0.1s; }
+.chart-item:nth-child(2) { animation-delay: 0.2s; }
+.chart-item:nth-child(3) { animation-delay: 0.3s; }
+.chart-item:nth-child(4) { animation-delay: 0.4s; }
+.chart-item:nth-child(5) { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
@@ -3146,7 +3378,10 @@ body.dark-mode .pie-chart {
   
   
   
-  
+  <div class="session-item" data-session="101">
+    <div class="session-title">جلسه ۱۰۱: تفسیر آیه دوم سوره بقره و مفهوم هدایت برای متقین</div>
+    <div class="new-session-date" id="session-date-101">سه‌شنبه ۲۷ آبان ۱۴۰۴</div>
+</div>
   
   <div class="session-item" data-session="100">
     <div class="session-title">جلسه ۱۰۰: مفهوم ظلالت به عنوان عدم هدایت در قرآن</div>
@@ -32915,7 +33150,369 @@ body.dark-mode .pie-chart {
     </div>
 </div>
 
+<!-- محتوای جلسه ۱۰۱ -->
+<div class="session-details" id="session-101">
+    <h1 class="content-heading">جلسه ۱۰۱: تفسیر آیه دوم سوره بقره و مفهوم هدایت برای متقین</h1>
+    
+    <!-- دکمه جدید برای کانال ایتا -->
+    <a href="https://eitaa.com/night_pray" class="ita-channel-btn" target="_blank">
+        <span class="ita-icon">📬</span>
+        فایل صوتی جلسه ۱۰۱
+    </a>
+    
+    <div class="session-date">
+        <span class="date-icon">📅</span>
+        <span>سه‌شنبه ۲۷ آبان ۱۴۰۴</span>
+    </div>
 
+    <div class="summary-box">
+        <h2 class="content-heading">خلاصه جلسه:</h2>
+        <p>این جلسه به تفسیر <strong>آیه دوم سوره بقره</strong> می‌پردازد که می‌فرماید: <strong>"ذلک الکتاب لا ریب فیه هدی للمتقین"</strong>. تمرکز اصلی بر مفهوم <strong>هدایت برای متقین</strong> و تفاوت بین <strong>هدایت اولیه و ثانویه</strong> است.</p>
+    </div>
+    
+    <div class="key-points">
+        <h2 class="content-heading">نکات کلیدی:</h2>
+        <ul>
+            <li><strong>هدایت در قرآن دو نوع است</strong>: هدایت اولیه (فطری) و هدایت ثانویه (قرآنی)</li>
+            <li><strong>متقین کسانی هستند</strong> که به هدایت اولیه فطری پاسخ مثبت داده‌اند</li>
+            <li><strong>پنج ویژگی متقین</strong> در آیات بعدی بیان شده است</li>
+            <li><strong>فطرت پاک انسان</strong> زیربنای تمام تعالیم دینی است</li>
+            <li><strong>هدایت قرآن</strong> برای کسانی است که ظرفیت پذیرش آن را دارند</li>
+        </ul>
+    </div>
+    
+    <h2 class="content-heading">تفاوت هدایت اولیه و ثانویه:</h2>
+    <div class="flowchart">
+        <div class="flowchart-step">هدایت اولیه (فطری)</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">پاسخ مثبت متقین</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">هدایت ثانویه (قرآنی)</div>
+        <div class="flowchart-arrow">→</div>
+        <div class="flowchart-step">رشد و تعالی معنوی</div>
+    </div>
+    
+<!-- نمودار ویژگی‌های متقین - نسخه کاملاً ریسپانسیو -->
+<div class="muttaqeen-chart-container">
+    <div class="muttaqeen-chart">
+        <div class="chart-header">
+            <h3 class="chart-title">ویژگی‌های پنج‌گانه متقین در آیات ۳-۵ سوره بقره</h3>
+            <div class="chart-subtitle">میزان اهمیت هر ویژگی در مسیر هدایت</div>
+        </div>
+        
+        <div class="chart-content">
+            <!-- ایمان به غیب -->
+            <div class="chart-item">
+                <div class="feature-name">ایمان به غیب</div>
+                <div class="chart-bar-container">
+                    <div class="chart-bar" data-value="95" style="width: 95%;">
+                        <span class="bar-value">95%</span>
+                    </div>
+                </div>
+                <div class="percentage-label">95%</div>
+            </div>
+            
+            <!-- اقامه نماز -->
+            <div class="chart-item">
+                <div class="feature-name">اقامه نماز</div>
+                <div class="chart-bar-container">
+                    <div class="chart-bar" data-value="90" style="width: 90%;">
+                        <span class="bar-value">90%</span>
+                    </div>
+                </div>
+                <div class="percentage-label">90%</div>
+            </div>
+            
+            <!-- انفاق -->
+            <div class="chart-item">
+                <div class="feature-name">انفاق</div>
+                <div class="chart-bar-container">
+                    <div class="chart-bar" data-value="85" style="width: 85%;">
+                        <span class="bar-value">85%</span>
+                    </div>
+                </div>
+                <div class="percentage-label">85%</div>
+            </div>
+            
+            <!-- ایمان به شرایع -->
+            <div class="chart-item">
+                <div class="feature-name">ایمان به شرایع</div>
+                <div class="chart-bar-container">
+                    <div class="chart-bar" data-value="88" style="width: 88%;">
+                        <span class="bar-value">88%</span>
+                    </div>
+                </div>
+                <div class="percentage-label">88%</div>
+            </div>
+            
+            <!-- یقین به آخرت -->
+            <div class="chart-item">
+                <div class="feature-name">یقین به آخرت</div>
+                <div class="chart-bar-container">
+                    <div class="chart-bar" data-value="92" style="width: 92%;">
+                        <span class="bar-value">92%</span>
+                    </div>
+                </div>
+                <div class="percentage-label">92%</div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <h2 class="content-heading">ویژگی‌های متقین:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ویژگی</th>
+                <th>توضیح</th>
+                <th>آیه مربوطه</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>ایمان به غیب</strong></td>
+                <td>اعتقاد به جهان ماوراء طبیعت و حقایق پنهان</td>
+                <td>آیه ۳</td>
+            </tr>
+            <tr>
+                <td><strong>اقامه نماز</strong></td>
+                <td>برپاداشتن نماز به صورت کامل و منظم</td>
+                <td>آیه ۳</td>
+            </tr>
+            <tr>
+                <td><strong>انفاق</strong></td>
+                <td>بخشش از آنچه خدا روزی کرده است</td>
+                <td>آیه ۳</td>
+            </tr>
+            <tr>
+                <td><strong>ایمان به همه شرایع</strong></td>
+                <td>اعتقاد به تمام کتاب‌های آسمانی و پیامبران</td>
+                <td>آیه ۴</td>
+            </tr>
+            <tr>
+                <td><strong>یقین به آخرت</strong></td>
+                <td>باور قطعی به روز قیامت و زندگی پس از مرگ</td>
+                <td>آیه ۴</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="method-box">
+        <h3 class="content-heading">نکته تفسیری مهم:</h3>
+        <p>اشاره <strong>"هدی للمتقین"</strong> به این معنا نیست که متقین هدایت نشده‌اند، بلکه نشان‌دهنده <strong>دو مرحله هدایت</strong> است. متقین به هدایت اولیه فطری پاسخ داده‌اند و اکنون مستحق هدایت ثانویه قرآنی هستند.</p>
+    </div>
+    
+    <h2 class="content-heading">مراحل شکوفایی فطرت در مسیر هدایت:</h2>
+    <div class="content-grid">
+        <div class="card">
+            <h4 class="card-title">فطرت پاک</h4>
+            <p>همه انسان‌ها با <strong>فطرت پاک</strong> متولد می‌شوند</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">هدایت اولیه</h4>
+            <p><strong>عقل فطری</strong> انسان را به سوی حقایق هدایت می‌کند</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">پاسخ مثبت</h4>
+            <p><strong>متقین</strong> به ندای فطرت پاسخ مثبت می‌دهند</p>
+        </div>
+        <div class="card">
+            <h4 class="card-title">هدایت ثانویه</h4>
+            <p><strong>قرآن</strong> مسیر رشد و تعالی را کامل می‌کند</p>
+        </div>
+    </div>
+    
+    <div class="quote">
+        <p>«فطرت انسان مانند <strong>بذر</strong> است و دین مانند <strong>آب و خاک</strong> که به این بذر امکان رشد و شکوفایی می‌دهد. تمام تعالیم دینی بر اساس همان فطرت پاک انسان است.»</p>
+    </div>
+    
+    <h2 class="content-heading">مقایسه متقین با دیگران:</h2>
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>ویژگی</th>
+                <th>متقین</th>
+                <th>منافقین و کفار</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>ایمان به غیب</strong></td>
+                <td>✅ دارند</td>
+                <td>❌ ندارند</td>
+            </tr>
+            <tr>
+                <td><strong>اقامه نماز</strong></td>
+                <td>✅ می‌کنند</td>
+                <td>❌ نمی‌کنند</td>
+            </tr>
+            <tr>
+                <td><strong>انفاق</strong></td>
+                <td>✅ می‌کنند</td>
+                <td>❌ نمی‌کنند</td>
+            </tr>
+            <tr>
+                <td><strong>ایمان به شرایع</strong></td>
+                <td>✅ دارند</td>
+                <td>❌ ندارند</td>
+            </tr>
+            <tr>
+                <td><strong>یقین به آخرت</strong></td>
+                <td>✅ دارند</td>
+                <td>❌ ندارند</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="conclusion">
+        <h3 class="content-heading">نتیجه‌گیری:</h3>
+        <p><strong>هدایت قرآن</strong> مخصوص کسانی است که <strong>فطرت پاک</strong> خود را حفظ کرده‌اند و به ندای درونی <strong>عقل فطری</strong> پاسخ مثبت داده‌اند. این افراد با داشتن <strong>پنج ویژگی اصلی</strong>، آماده دریافت هدایت‌های کامل‌تر قرآن هستند و می‌توانند به رشد و تعالی معنوی دست یابند.</p>
+    </div>
+    
+    <div class="quiz-container" id="quiz-session-101">
+        <h3 class="content-heading">آزمون سنجش یادگیری جلسه ۱۰۱</h3>
+        <div class="quiz-questions">
+            <div class="quiz-question">
+                <p>1. منظور از "هدی للمتقین" در آیه دوم سوره بقره چیست؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q1" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">هدایت مخصوص افراد کامل</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">هدایت برای کسانی که فطرت پاک دارند</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">هدایت برای همه انسان‌ها</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">هدایت برای پیامبران</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>2. کدام یک از ویژگی‌های متقین در آیات سوره بقره ذکر نشده است؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q2" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">ایمان به غیب</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">ایمان به همه پیامبران</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">یقین به آخرت</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">زیارت اماکن مقدس</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>3. تفاوت اصلی هدایت اولیه و ثانویه چیست؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q3" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">هدایت اولیه فطری و ثانویه قرآنی است</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">هدایت اولیه برای همه و ثانویه برای خاصان</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">هدایت اولیه موقت و ثانویه دائمی است</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">فرقی با هم ندارند</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>4. منظور از "فطرت" در این جلسه چیست؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q4" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">سرشت پاک و الهی انسان</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">عادت‌های اکتسابی انسان</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">ویژگی‌های جسمانی انسان</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">هیچکدام</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>5. کدام آیه سوره ملک به اهمیت عقل فطری اشاره می‌کند؟</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q5" value="A">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">آیه ۵</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="B">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">آیه ۱۵</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="C">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">آیه ۱۰</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="D">
+                        <span class="custom-checkbox"></span>
+                        <span class="option-text">آیه ۲۰</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <button class="submit-quiz" data-session="101">ثبت آزمون</button>
+        <div class="quiz-result" style="display: none;"></div>
+    </div>
+    
+    <!-- کد دکمه‌های پیمایش بین جلسات -->
+    <div class="session-navigation">
+        <button class="nav-btn prev-btn" onclick="navigateToSession('prev')">جلسه قبل</button>
+        <button class="nav-btn next-btn" onclick="navigateToSession('next')">جلسه بعد</button>
+    </div>
+</div>
 
 
 
@@ -39064,6 +39661,52 @@ quizAnswers[100] = {
 
 
 
+// اضافه کردن پاسخ‌های صحیح جلسه ۱۰۱
+quizAnswers[101] = {
+    q1: "B",
+    q2: "D", 
+    q3: "A",
+    q4: "A",
+    q5: "C"
+};
+
+// اسکریپت برای انیمیشن نمودار
+document.addEventListener('DOMContentLoaded', function() {
+    const chartBars = document.querySelectorAll('.chart-bar');
+    
+    // انیمیشن برای میله‌های نمودار
+    setTimeout(() => {
+        chartBars.forEach(bar => {
+            const finalWidth = bar.style.width;
+            bar.style.width = '0%';
+            
+            setTimeout(() => {
+                bar.style.transition = 'width 1s ease-in-out';
+                bar.style.width = finalWidth;
+            }, 100);
+        });
+    }, 500);
+    
+    // افکت hover برای آیتم‌ها
+    const chartItems = document.querySelectorAll('.chart-item');
+    
+    chartItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(8px)';
+            this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0)';
+            this.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+        });
+    });
+});
+
+
+
+
+
 
 
 
@@ -39250,6 +39893,7 @@ const sessionTags = {
 98: ["معرفت قرآنی","چله 37","آبان ماه"],
 99: ["سوره بقره","معرفت قرآنی","چله 37","آبان ماه"],
 100: ["سوره بقره","معرفت قرآنی","چله 37","آبان ماه"],
+101: ["سوره بقره","معرفت قرآنی","چله 37","آبان ماه"],
 };
 
 // تابع ایجاد سیستم برچسب‌ها
